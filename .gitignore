@@ -1,0 +1,11 @@
+__pycache__/
+*.py[cod]
+.DS_Store
+Thumbs.db
+.env
+.venv/
+distillation/raw/
+*.jsonl
+voice_transcriptions.json
+merged.jsonl
+stats.json
