@@ -157,3 +157,14 @@ Step 7: 等用户复核
 - 每条原文引用都要克制；能转述脱敏就不要大段引用。
 
 
+
+## Local Voice Ingestion / 本地语音入口
+
+Use this path when source material includes local audio, voice notes, meeting recordings, listening-practice audio, or exported WeChat voice messages. Call it "Local Voice Ingestion" / "本地语音入口"; do not describe it as a bundled model. The user must provide a local ASR model with `--model` or `LIVING_MIRROR_ASR_MODEL`.
+
+```bash
+python scripts/probe_local_voice_env.py
+python scripts/batch_transcribe_local_voice.py --input raw/audio --output raw/voice-transcripts --recursive --resume --model <local-asr-model-or-path>
+```
+
+Then merge `raw/voice-transcripts/transcripts.jsonl` with `scripts/merge_messages.py`.

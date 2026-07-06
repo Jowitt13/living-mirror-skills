@@ -8,6 +8,12 @@ Language: English | [简体中文](README.zh-CN.md)
 
 It is not a personality clone. It is a mirror that can revise itself, admit uncertainty, and learn from correction.
 
+## Local Voice Ingestion
+
+Living Mirror can also prepare voice records before self-distillation. The **Local Voice Ingestion** module turns local audio, including exported WeChat voice messages, meeting recordings, voice notes, and listening-practice files, into transcript artifacts.
+
+The module does not bundle a speech model and does not hardcode one. Configure your own local ASR model at runtime with `--model` or `LIVING_MIRROR_ASR_MODEL`.
+
 ## What This Is
 
 Most personal-memory projects try to make an assistant "sound like you" or remember more facts. This project takes a different route:
@@ -123,7 +129,7 @@ This repository ships three ready-to-use versions of the same framework.
 | Codex | `packages/codex/` | Codex skill installation. Uses Codex-compatible frontmatter with only `name` and `description`. |
 | Claude Code | `packages/claude-code/` | Claude Code users. Includes a small `README.md` and Claude-oriented trigger guidance. |
 
-All three versions share the same references and scripts.
+All three versions share the same references and scripts, including the local voice-ingestion utilities.
 
 ## Installation
 
@@ -179,10 +185,16 @@ Initialize a distillation workspace:
 python scripts/init_distillation.py <workspace>
 ```
 
+Transcribe local audio with a user-provided local ASR model:
+
+```bash
+LIVING_MIRROR_ASR_MODEL="<your-model-or-local-path>" python scripts/batch_transcribe_local_voice.py --input raw/audio --output raw/voice-transcripts --recursive --resume
+```
+
 Merge text messages and voice transcripts:
 
 ```bash
-python scripts/merge_messages.py --messages raw/messages.jsonl --voice raw/voice_transcriptions.json --output raw/merged.jsonl --sort
+python scripts/merge_messages.py --messages raw/messages.jsonl --voice raw/voice-transcripts/transcripts.jsonl --output raw/merged.jsonl --sort
 ```
 
 Generate descriptive statistics:
@@ -232,6 +244,7 @@ python scripts/verify_sender.py --input raw/merged.jsonl --keyword "自由" --st
 │   └── claude-code/
 ├── docs/
 │   ├── examples.md
+│   ├── local-voice-ingestion.md
 │   ├── privacy-and-safety.md
 │   └── platform-notes.md
 ├── LICENSE

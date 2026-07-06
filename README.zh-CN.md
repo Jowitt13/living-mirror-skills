@@ -8,6 +8,12 @@
 
 它不是把你克隆成一个 AI，也不是训练一个模仿你说话的人格。它更像是一面会迭代、会认错、能留下证据链的镜子：照见自己，也允许自己推翻它。
 
+## 本地语音入口
+
+Living Mirror 也可以在自我蒸馏前先处理语音材料。**本地语音入口**模块会把本地音频，包括微信语音导出、会议录音、语音备忘、听力练习音频等，转成后续可分析的文本产物。
+
+这个模块不内置语音模型，也不写死某个模型名。请在运行时通过 `--model` 参数或 `LIVING_MIRROR_ASR_MODEL` 环境变量指定你自己的本地语音识别模型。
+
 ## 这是什么
 
 很多个人记忆项目都在追求「让 AI 更像我」或者「让 AI 记住更多事实」。这个项目关注的是另一件事：
@@ -135,7 +141,7 @@
 | Codex | `packages/codex/` | 安装到 Codex Skills。这个版本使用 Codex 兼容的最小 frontmatter。 |
 | Claude Code | `packages/claude-code/` | 安装到 Claude Code Skills。包含 Claude Code 使用说明。 |
 
-三套版本的方法论、references 和 scripts 是一致的，只是入口元数据适配不同平台。
+三套版本的方法论、references 和 scripts 是一致的，只是入口元数据适配不同平台；三套版本都包含本地语音入口工具。
 
 ## 安装方式
 
@@ -193,10 +199,16 @@ Copy-Item -Path .\packages\workbuddy -Destination "$env:USERPROFILE\.workbuddy\s
 python scripts/init_distillation.py <workspace>
 ```
 
+用用户配置的本地语音识别模型转写音频：
+
+```bash
+LIVING_MIRROR_ASR_MODEL="<你的模型名或本地路径>" python scripts/batch_transcribe_local_voice.py --input raw/audio --output raw/voice-transcripts --recursive --resume
+```
+
 合并文本消息和语音转录：
 
 ```bash
-python scripts/merge_messages.py --messages raw/messages.jsonl --voice raw/voice_transcriptions.json --output raw/merged.jsonl --sort
+python scripts/merge_messages.py --messages raw/messages.jsonl --voice raw/voice-transcripts/transcripts.jsonl --output raw/merged.jsonl --sort
 ```
 
 生成数据概览：
@@ -246,6 +258,7 @@ python scripts/verify_sender.py --input raw/merged.jsonl --keyword "自由" --st
 │   └── claude-code/
 ├── docs/
 │   ├── examples.md
+│   ├── local-voice-ingestion.md
 │   ├── privacy-and-safety.md
 │   └── platform-notes.md
 ├── LICENSE
