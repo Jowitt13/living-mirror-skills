@@ -1,9 +1,9 @@
 ---
-name: self-distillation
-description: 自我蒸馏记忆系统。从用户本地聊天记录、flomo、日记等碎片数据中，蒸馏出带证据、带置信度、允许矛盾、可被推翻、可回滚的自画像。Use when the user asks to "蒸馏自己", build a self portrait, analyze chat records, understand themselves, run monthly distillation, track CONFLICTs, apply Corrections, verify senders for verbatim quotes, or merge time-batch and theme-based self-distillation reports.
+name: living-mirror
+description: 见己镜 Living Mirror：自我蒸馏记忆系统。从用户本地聊天记录、flomo、日记等碎片数据中，蒸馏出带证据、带置信度、允许矛盾、可被推翻、可回滚的自画像。Use when the user asks to "蒸馏自己", build a self portrait, analyze chat records, understand themselves, run monthly distillation, track CONFLICTs, apply Corrections, verify senders for verbatim quotes, or merge time-batch and theme-based self-distillation reports.
 ---
 
-# 自我蒸馏
+# 见己镜 Living Mirror
 
 Codex 版说明：本版本的 frontmatter 只使用 `name` 和 `description`，以便通过 Codex skill 校验和自动发现。WorkBuddy/Claude Code 触发词被合并进 description。
 
@@ -155,3 +155,5 @@ Step 7: 等用户复核
 - 只在用户允许的数据范围内处理，默认本地完成。
 - 模板可以复制，但内容必须基于用户自己的证据重写。
 - 每条原文引用都要克制；能转述脱敏就不要大段引用。
+
+

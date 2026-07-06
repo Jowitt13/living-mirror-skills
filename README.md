@@ -1,10 +1,12 @@
-# Self Distillation Skills
+# Living Mirror Skills
 
-> Turn local chat logs, notes, and journals into an evidence-backed self portrait.
+> A verifiable mirror for your inner life: turn local chat logs, notes, and journals into an evidence-backed self portrait.
 
-Self Distillation Skills is a reusable skill pack for building a "self-distillation memory system": a method for reading your own fragmented records, such as chat histories, flomo notes, journals, and voice transcripts, and producing a self portrait that is evidence-backed, confidence-scored, contradiction-aware, correctable, and versioned.
+Language: English | [简体中文](README.zh-CN.md)
 
-It is not a personality clone. It is a mirror that can revise itself.
+**Living Mirror** is the public name for this self-distillation skill pack. It reads your fragmented records, such as chat histories, flomo notes, journals, and voice transcripts, and helps an AI agent produce a self portrait that is evidence-backed, confidence-scored, contradiction-aware, correctable, and versioned.
+
+It is not a personality clone. It is a mirror that can revise itself, admit uncertainty, and learn from correction.
 
 ## What This Is
 
@@ -130,13 +132,13 @@ All three versions share the same references and scripts.
 Copy the Codex package into your Codex skills directory:
 
 ```powershell
-Copy-Item -Path .\packages\codex -Destination "$env:USERPROFILE\.codex\skills\self-distillation" -Recurse -Force
+Copy-Item -Path .\packages\codex -Destination "$env:USERPROFILE\.codex\skills\living-mirror" -Recurse -Force
 ```
 
 Then invoke it by asking Codex for self distillation, for example:
 
 ```text
-Use $self-distillation to analyze my local chat records and build a monthly self portrait.
+Use $living-mirror to analyze my local chat records and build a monthly self portrait.
 ```
 
 ### Claude Code
@@ -144,13 +146,13 @@ Use $self-distillation to analyze my local chat records and build a monthly self
 Copy the Claude Code package into your Claude skills directory:
 
 ```powershell
-Copy-Item -Path .\packages\claude-code -Destination "$env:USERPROFILE\.claude\skills\self-distillation" -Recurse -Force
+Copy-Item -Path .\packages\claude-code -Destination "$env:USERPROFILE\.claude\skills\living-mirror" -Recurse -Force
 ```
 
 Then ask Claude Code:
 
 ```text
-Use self-distillation to distill these JSONL chat records. Verify sender before quoting anything.
+Use living-mirror to distill these JSONL chat records. Verify sender before quoting anything.
 ```
 
 ### WorkBuddy
@@ -158,7 +160,7 @@ Use self-distillation to distill these JSONL chat records. Verify sender before 
 Copy the WorkBuddy package into your WorkBuddy skills directory:
 
 ```powershell
-Copy-Item -Path .\packages\workbuddy -Destination "$env:USERPROFILE\.workbuddy\skills\self-distillation" -Recurse -Force
+Copy-Item -Path .\packages\workbuddy -Destination "$env:USERPROFILE\.workbuddy\skills\living-mirror" -Recurse -Force
 ```
 
 Use natural triggers such as:
@@ -274,3 +276,5 @@ references/sender-verification.md
 ## License
 
 MIT License. See [LICENSE](LICENSE).
+
+

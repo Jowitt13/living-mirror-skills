@@ -1,6 +1,6 @@
 # Privacy and Safety
 
-Self Distillation Skills is designed for local-first qualitative analysis.
+Living Mirror Skills is designed for local-first qualitative analysis.
 
 ## Privacy Rules
 
@@ -44,3 +44,4 @@ This project can surface uncomfortable patterns. Use it gently:
 - Keep contradictions open when the evidence is mixed.
 
 This is a reflective tool, not a clinical tool.
+

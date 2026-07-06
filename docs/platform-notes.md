@@ -29,7 +29,7 @@ This version uses Codex-compatible frontmatter:
 
 ```yaml
 ---
-name: self-distillation
+name: living-mirror
 description: ...
 ---
 ```
@@ -61,3 +61,4 @@ All versions share:
 - standard-library Python scripts
 
 The core method is the same across platforms.
+

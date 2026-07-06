@@ -1,6 +1,6 @@
 ---
-name: self-distillation
-description: 自我蒸馏记忆系统 - 从用户的聊天记录/flomo/日记里蒸馏出带证据、带置信度、允许矛盾、可被推翻的自画像。当用户说"蒸馏自己""自画像""理解自己""自我认知""分析我的聊天记录"时触发。支持两轮蒸馏（按时间段+按主题纵向）+ sender全验证 + CONFLICT追踪 + Correction机制。
+name: living-mirror
+description: 见己镜 Living Mirror - 从用户的聊天记录/flomo/日记里蒸馏出带证据、带置信度、允许矛盾、可被推翻的自画像。当用户说"蒸馏自己""自画像""理解自己""自我认知""分析我的聊天记录"时触发。支持两轮蒸馏（按时间段+按主题纵向）+ sender全验证 + CONFLICT追踪 + Correction机制。
 version: "1.0"
 updated: "2026-07-07"
 platforms: [claude-code]
@@ -15,7 +15,7 @@ triggers:
   - "distillation"
 ---
 
-# 自我蒸馏
+# 见己镜 Living Mirror
 
 从用户的碎片记录里（聊天记录/flomo/日记），蒸馏出此刻的他/她，产出一套带证据、带置信度、允许矛盾、可被推翻、可回滚的自画像。
 
@@ -165,3 +165,5 @@ Step 7: 等用户复核
 - 只在用户允许的数据范围内处理，默认本地完成。
 - 模板可以复制，但内容必须基于用户自己的证据重写。
 - 每条原文引用都要克制；能转述脱敏就不要大段引用。
+
+

@@ -90,3 +90,4 @@ python scripts/merge_messages.py --messages raw/messages.jsonl --voice raw/voice
 ## 回滚
 
 回滚时从 `archive/` 恢复旧版自画像，并更新 `manifest.json` 的 `current_version`。不要删除被回滚的版本。
+

@@ -1,6 +1,7 @@
 interface:
-  display_name: "自我蒸馏"
-  short_description: "从本地碎片记录中蒸馏可验证、可纠正的自画像"
-  default_prompt: "Use $self-distillation to distill my local chat records into an evidence-backed self portrait."
+  display_name: "见己镜 Living Mirror"
+  short_description: "把本地碎片记录蒸馏成可验证的自画像"
+  default_prompt: "Use $living-mirror to turn my local records into an evidence-backed, correctable self portrait."
 policy:
   allow_implicit_invocation: true
+

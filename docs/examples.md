@@ -5,7 +5,7 @@
 User request:
 
 ```text
-Use self-distillation to analyze my June chat records and update my self portrait.
+Use living-mirror to analyze my June chat records and update my self portrait.
 ```
 
 Expected flow:
@@ -79,3 +79,4 @@ Update `corrections.md`:
 - Synced to: self-portrait-YYYY-MM.md
 - Distiller reflection: special-period data should not become a stable trait.
 ```
+

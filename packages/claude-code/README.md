@@ -1,21 +1,21 @@
-# self-distillation for Claude Code
+# living-mirror for Claude Code
 
-这个包是 Claude Code 版的自我蒸馏 Skill。
+这个包是 Claude Code 版的见己镜（Living Mirror）Skill。
 
 ## 放置位置
 
 推荐放在：
 
 ```text
-C:\Users\hangi\.claude\skills\self-distillation
+C:\Users\hangi\.claude\skills\living-mirror
 ```
 
 ## 使用方式
 
 在 Claude Code 中可以直接说：
 
-- `使用 self-distillation 蒸馏我的聊天记录`
-- `按 self-distillation 框架分析这些 jsonl`
+- `使用 living-mirror 蒸馏我的聊天记录`
+- `按 living-mirror 框架分析这些 jsonl`
 - `帮我做月度自画像，先验证 sender`
 - `读取 references/sender-verification.md，检查这几条 verbatim 归属`
 
@@ -32,3 +32,4 @@ C:\Users\hangi\.claude\skills\self-distillation
 3. 使用 `scripts/verify_sender.py` 验证关键 verbatim。
 4. 不要仅凭关键词定性关系、情绪或人格。
 5. 每个主题报告完成后等待用户复核，再进入下一主题。
+
