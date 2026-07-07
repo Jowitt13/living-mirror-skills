@@ -205,3 +205,13 @@ python scripts/batch_transcribe_local_voice.py --input raw/audio --output raw/vo
 ```
 
 Then merge `raw/voice-transcripts/transcripts.jsonl` with `scripts/merge_messages.py`.
+
+### WeChat SILK (multiprocess-optimized)
+
+WeChat voice exports are `.silk` (SILK codec). Use the dedicated script, which decodes SILK with `pilk` directly to 16 kHz, pre-decodes all files on CPU cores in parallel, then runs batched FunASR inference so the GPU is fully saturated:
+
+```bash
+LIVING_MIRROR_ASR_MODEL="paraformer-zh" python scripts/batch_transcribe_wechat_silk.py --input "D:/wechat/voice" --output raw/voice-transcripts --resume
+```
+
+It recovers `timestamp` / `sender_wxid` from the SILK filename; pass `--me-wxid` to infer `is_self`. Details and py3.13 install caveats are in `docs/local-voice-ingestion.md`.

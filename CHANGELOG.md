@@ -1,5 +1,22 @@
 # Changelog
 
+## v0.6.1 - 2026-07-08
+
+Local Voice Ingestion: added a WeChat-SILK specialization with multiprocess decoding.
+
+Added:
+
+- `scripts/batch_transcribe_wechat_silk.py` in every package: transcribes WeChat `.silk` voice exports with a user-supplied local FunASR model.
+- Performance design: `pilk` decodes SILK directly to 16 kHz (no manual resampling), all SILK files are pre-decoded on CPU cores in parallel, then a single process runs batched FunASR inference so the GPU is fully saturated (utilization ~9% -> ~100%).
+- Filename parsing recovers `timestamp` / `sender_wxid`; `--me-wxid` infers `is_self`.
+- Output shape matches `batch_transcribe_local_voice.py`: `transcripts.jsonl` + `manifest.json` (resume) + `summary.md` + `run_summary.json`.
+
+Docs:
+
+- `docs/local-voice-ingestion.md` now documents the WeChat SILK path and the py3.13 install caveat (`pip install funasr --no-deps` to bypass the `editdistance` build failure).
+- README and README.zh-CN add a "WeChat SILK Voices (multiprocess-optimized)" subsection.
+- `packages/workbuddy/SKILL.md` Local Voice Ingestion section references the SILK script.
+
 ## v0.6 - 2026-07-07
 
 Living Mirror v0.6 unifies the dynamic mirror upgrades into one named framework version.

@@ -16,6 +16,16 @@ Living Mirror can also prepare voice records before self-distillation. The **Loc
 
 The module does not bundle a speech model and does not hardcode one. Configure your own local ASR model at runtime with `--model` or `LIVING_MIRROR_ASR_MODEL`.
 
+### WeChat SILK Voices (multiprocess-optimized)
+
+WeChat exports voice as `.silk` (SILK codec). The package ships `batch_transcribe_wechat_silk.py`, a WeChat-specific specialization that decodes SILK with `pilk` directly to 16 kHz, pre-decodes all files on CPU cores in parallel, then runs batched FunASR inference so the GPU is fully saturated (utilization rises from ~9% to ~100%). It recovers `timestamp` / `sender_wxid` from the filename; pass `--me-wxid` to infer `is_self`.
+
+```bash
+LIVING_MIRROR_ASR_MODEL="paraformer-zh" python scripts/batch_transcribe_wechat_silk.py --input "D:/wechat/voice" --output raw/voice-transcripts --resume
+```
+
+Py3.13 install caveat: `pip install funasr --no-deps` after the other deps, because `editdistance` has no prebuilt wheel and rolls back the install. Full notes in `docs/local-voice-ingestion.md`.
+
 ## Design Lineage
 
 Living Mirror's architecture is an original integration with conceptual references to `yourself-skill`, `immortal-skill`, and `ex-skill`. The dual Self Memory + Persona structure, contradiction tracking, Correction layer, and evidence grading are credited in [Design Lineage](docs/design-lineage.md).
