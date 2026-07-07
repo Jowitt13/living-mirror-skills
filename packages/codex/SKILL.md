@@ -25,7 +25,7 @@ Codex 版说明：本版本的 frontmatter 只使用 `name` 和 `description`，
 
 ```
 ① 数据采集层：聊天记录 + flomo/日记 -> 统一碎片格式
-② 蒸馏框架层：Part A 自我记忆5维度 + Part B 人格5层 + 四套机制
+② 蒸馏框架层：Part A 自我记忆11维度（基础5 + v0.4/v0.5扩展6）+ Part B 人格5层 + 四套机制
 ③ 输出层：自画像 + conflicts + corrections + changelog + manifest
 ```
 
@@ -36,6 +36,12 @@ Codex 版说明：本版本的 frontmatter 只使用 `name` 和 `description`，
 3. 人际关系
 4. 目标与方向
 5. 个人经历
+6. 饮食偏好
+7. 生活习惯
+8. 思维方式
+9. 世界观与人生观
+10. 爱好系统
+11. 亲密/性表达（可选敏感维度，必须获得用户明确同意）
 
 ### Part B 人格五层
 
@@ -76,6 +82,7 @@ impression -> 蒸馏器推断，最低级，必须配原文或 artifact
 2. 关键词统计只用于发现值得读的对话段，不用于定性关系、情绪、依恋类型。见 `references/keyword-usage.md`。
 3. 每个时间段/主题开头强制标注特殊时期。凡涉及"下降/减少/边缘化"判断，先排除考试周、假期、生病期、重大事件期。见 `references/special-period.md`。
 4. 优先采信用户自我报告；量化数据只做描述，不做定性终审。
+5. 如涉及第 16 主题（亲密/性表达），先确认用户明确同意；不同意或犹豫时直接跳过，不追问、不推断。
 
 ## 标准流程
 
@@ -106,12 +113,12 @@ distillation/
 1. **数据准备**：收集聊天记录/flomo/日记到 `distillation/raw/`。需要合并文本和语音转录时运行 `scripts/merge_messages.py`，需要概览时运行 `scripts/stats_overview.py`。
 2. **CONFLICT 回看**：读取 `conflicts.md`，列出本次要重点验证的矛盾。
 3. **第一轮：按时间段蒸馏**：按季度、人生阶段或用户指定范围切分数据，用 `scripts/filter_by_time.py` 筛选，读原文并产出批次报告。模板见 `references/batch-report-template.md`。
-4. **第二轮：按主题纵向蒸馏**：10 个主题逐一跨全时段分析，用 `scripts/filter_by_theme.py` 筛选，读原文、验证 sender、纵向识别模式。模板见 `references/theme-report-template.md`。
+4. **第二轮：按主题纵向蒸馏**：最多 16 个主题逐一跨全时段分析，可按用户目标裁剪；第 16 主题为可选敏感主题，必须获得明确同意后才启用。用 `scripts/filter_by_theme.py` 筛选，读原文、验证 sender、纵向识别模式。模板见 `references/theme-report-template.md`。
 5. **用户复核**：每个主题完成后必须等用户复核。错误立即 Correction，补充立即追加，可关闭的 CONFLICT 标记关闭。
-6. **合并自画像**：以 10 主题为骨架，把批次时间线深度、verbatim 证据、阶段演变细节编织进去。不简化、不删减。模板见 `references/self-portrait-template.md`。
+6. **合并自画像**：以已完成的纵向主题为骨架，把批次时间线深度、verbatim 证据、阶段演变细节编织进去。不简化、不删减。模板见 `references/self-portrait-template.md`。
 7. **更新元数据**：更新 `conflicts.md`、`corrections.md`、`changelog.md`、`manifest.json`，旧版本归档。
 
-## 10 个纵向主题
+## 最多 16 个纵向主题
 
 1. 价值观与情绪
 2. 行为与决策模式
@@ -123,6 +130,12 @@ distillation/
 8. 说话风格演变
 9. 冲突处理进化
 10. 消费观演变
+11. 饮食偏好
+12. 生活习惯
+13. 思维方式
+14. 世界观与人生观
+15. 爱好系统
+16. 亲密/性表达（可选敏感主题，必须获得用户明确同意；可跳过）
 
 每个主题流程：
 

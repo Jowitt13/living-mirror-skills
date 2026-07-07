@@ -14,6 +14,10 @@ Living Mirror can also prepare voice records before self-distillation. The **Loc
 
 The module does not bundle a speech model and does not hardcode one. Configure your own local ASR model at runtime with `--model` or `LIVING_MIRROR_ASR_MODEL`.
 
+## Design Lineage
+
+Living Mirror's architecture is an original integration with conceptual references to `yourself-skill`, `immortal-skill`, and `ex-skill`. The dual Self Memory + Persona structure, contradiction tracking, Correction layer, and evidence grading are credited in [Design Lineage](docs/design-lineage.md).
+
 ## What This Is
 
 Most personal-memory projects try to make an assistant "sound like you" or remember more facts. This project takes a different route:
@@ -34,7 +38,7 @@ Use this skill pack when you want to:
 - Understand yourself from years of real messages, notes, and journals.
 - Build a monthly or quarterly self portrait.
 - Analyze relationship patterns without relying on vague impressions.
-- Track how values, goals, emotions, habits, speech style, and conflicts evolve.
+- Track how values, goals, emotions, habits, thinking style, lifestyle preferences, speech style, and conflicts evolve.
 - Keep an evidence trail for every important insight.
 - Avoid common AI analysis mistakes such as sender attribution errors, keyword overinterpretation, and special-period bias.
 - Build a local-first personal memory workflow for Codex, Claude Code, or WorkBuddy.
@@ -60,7 +64,7 @@ The framework has three layers:
    Chat logs + notes + journals -> unified fragments
 
 2. Distillation layer
-   Part A: five self-memory dimensions
+   Part A: 11 self-memory dimensions
    Part B: five personality layers
    Evidence grading + CONFLICT tracking + Correction + versioning
 
@@ -68,13 +72,25 @@ The framework has three layers:
    Self portrait + conflicts + corrections + changelog + manifest
 ```
 
-### Part A: Five Self-Memory Dimensions
+### Part A: 11 Self-Memory Dimensions
 
 1. Values and emotions
 2. Behavior and decision patterns
 3. Relationships
 4. Goals and direction
 5. Personal history and growth timeline
+6. Food preferences
+7. Lifestyle habits
+8. Thinking style
+9. Worldview and lifeview
+10. Hobbies and interest system
+11. Intimacy / sexuality expression (optional sensitive dimension; explicit user consent required)
+
+### v0.4 / v0.5 Framework Extensions
+
+v0.4 expands the longitudinal map from 10 themes to 15 by adding food preferences, lifestyle habits, thinking style, worldview/lifeview, and hobbies.
+
+v0.5 adds a 16th optional sensitive theme: intimacy / sexuality expression. This theme is off by default, must be explicitly authorized by the user, and can be skipped without affecting the main workflow. When enabled, it requires stricter privacy handling, redacted quotes, sender verification, and no moralizing or pathologizing.
 
 ### Part B: Five Personality Layers
 
@@ -228,7 +244,7 @@ python scripts/verify_sender.py --input raw/merged.jsonl --keyword "自由" --st
 3. Generate a stats overview.
 4. Review existing `conflicts.md` and `corrections.md`.
 5. Run a first pass by time period.
-6. Run a second pass by the 10 longitudinal themes.
+6. Run a second pass by up to 16 longitudinal themes; theme 16 is optional and requires explicit user consent.
 7. Verify sender for every key quote.
 8. Ask the user to review each theme report.
 9. Merge the reports into `self-portrait-YYYY-MM.md`.
@@ -244,6 +260,7 @@ python scripts/verify_sender.py --input raw/merged.jsonl --keyword "自由" --st
 │   └── claude-code/
 ├── docs/
 │   ├── examples.md
+│   ├── design-lineage.md
 │   ├── local-voice-ingestion.md
 │   ├── privacy-and-safety.md
 │   └── platform-notes.md
