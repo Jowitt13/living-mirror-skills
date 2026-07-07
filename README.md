@@ -28,6 +28,7 @@ Most personal-memory projects try to make an assistant "sound like you" or remem
 - It keeps contradictions instead of flattening them.
 - It lets the user overturn the analysis through a Correction layer.
 - It keeps versions so the portrait can evolve and roll back.
+- It separates stable traits from temporary states, relationship-triggered patterns, and special-period reactions.
 
 The result is a living self portrait, not a fixed label.
 
@@ -66,7 +67,7 @@ The framework has three layers:
 2. Distillation layer
    Part A: 11 self-memory dimensions
    Part B: five personality layers
-   Evidence grading + CONFLICT tracking + Correction + versioning
+   Evidence grading + CONFLICT tracking + Correction + versioning + dynamic mirror rules
 
 3. Output layer
    Self portrait + conflicts + corrections + changelog + manifest
@@ -92,6 +93,19 @@ v0.4 expands the longitudinal map from 10 themes to 15 by adding food preference
 
 v0.5 adds a 16th optional sensitive theme: intimacy / sexuality expression. This theme is off by default, must be explicitly authorized by the user, and can be skipped without affecting the main workflow. When enabled, it requires stricter privacy handling, redacted quotes, sender verification, and no moralizing or pathologizing.
 
+### Dynamic Mirror Rules
+
+Living Mirror now includes a dynamic judgment layer for deeper and safer interpretation. Important insights should state:
+
+- Whether the pattern is a stable trait, stage state, special-period response, relationship-triggered pattern, or pending pattern.
+- Which context shaped the evidence: time, relationship, body/energy state, environment, event, or medium.
+- Three confidence scores: evidence confidence, interpretation confidence, and stability confidence.
+- The difference between fact, interpretation, and a temporary pattern name.
+- What would overturn or weaken the insight.
+- The user's own language for the pattern, when available.
+
+This makes the framework better at describing living people instead of freezing them into labels.
+
 ### Part B: Five Personality Layers
 
 1. Hard rules
@@ -100,7 +114,7 @@ v0.5 adds a 16th optional sensitive theme: intimacy / sexuality expression. This
 4. Emotional patterns
 5. Interpersonal behavior
 
-## The Four Safety Mechanisms
+## Safety Mechanisms
 
 ### Evidence Grading
 
@@ -134,6 +148,19 @@ When the user says "this is not me", the system corrects immediately:
 ### Incremental Merge and Versioning
 
 Monthly updates do not overwrite the old portrait. New insights, revisions, conflicts, corrections, and metadata are versioned through `manifest.json`, `changelog.md`, and `archive/`.
+
+### State/Trait and Falsifiability
+
+The dynamic mirror rules prevent overclaiming. A powerful quote can make evidence confidence high, while stability confidence remains low. Every important insight should say what context shaped it and what future evidence or user correction would overturn it.
+
+## Optional Outputs
+
+Besides the full self portrait, the skill can produce:
+
+- A short portrait with 5 to 9 evidence-backed bullets.
+- A relationship map organized by relationship type or a consented specific relationship.
+- A change timeline showing when patterns appeared, intensified, softened, or were corrected.
+- A validation question list for the user to confirm, reject, or rename low-confidence insights.
 
 ## Three Platform Versions
 
@@ -246,9 +273,10 @@ python scripts/verify_sender.py --input raw/merged.jsonl --keyword "自由" --st
 5. Run a first pass by time period.
 6. Run a second pass by up to 16 longitudinal themes; theme 16 is optional and requires explicit user consent.
 7. Verify sender for every key quote.
-8. Ask the user to review each theme report.
-9. Merge the reports into `self-portrait-YYYY-MM.md`.
-10. Update `manifest.json`, `changelog.md`, `conflicts.md`, and `corrections.md`.
+8. Apply dynamic mirror rules: state/trait, context weight, three-part confidence, and falsifiability.
+9. Ask the user to review each theme report.
+10. Merge the reports into `self-portrait-YYYY-MM.md`.
+11. Update `manifest.json`, `changelog.md`, `conflicts.md`, and `corrections.md`.
 
 ## Repository Structure
 

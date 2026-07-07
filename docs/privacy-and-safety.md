@@ -21,6 +21,18 @@ Every meaningful insight should be traceable to evidence:
 
 Low-confidence insights should remain pending instead of being promoted into the self portrait.
 
+## Stability Safety
+
+Do not turn a temporary state into a permanent identity claim.
+
+For important insights, separate:
+
+- evidence confidence
+- interpretation confidence
+- stability confidence
+
+A quote can be real and sender-verified while the broader interpretation is still uncertain. Mark context weight such as stress period, illness, relationship role, or medium before calling a pattern stable.
+
 ## Sender Safety
 
 Never make a claim about who said or did something from a summary alone. Go back to the original data and verify fields such as:
@@ -38,6 +50,7 @@ This is especially important for voice transcripts, group chats, and preprocesse
 This project can surface uncomfortable patterns. Use it gently:
 
 - Do not turn observations into fixed identity labels.
+- Do not let a diagnosis-like label replace the user's own language.
 - Do not diagnose mental health conditions.
 - Do not use a self portrait to pressure or manipulate someone.
 - Let the user correct the analysis.

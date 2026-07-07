@@ -50,7 +50,12 @@
 | YYYY-MM-DD | "<克制引用>" | me(已验证) |
 
 - 证据等级：verbatim/artifact/impression
-- 置信度：高/中/低
+- 模式类型：stable_trait / stage_state / special_period_response / relationship_triggered / pending_pattern
+- 情境权重：time=<...>; relationship=<...>; body=<...>; event=<...>; medium=<...>
+- 置信度：evidence=高/中/低；interpretation=高/中/低；stability=高/中/低
+- 事实/解释/命名：fact=<...>; interpretation=<...>; temporary_name=<...>
+- 可推翻条件：<什么证据、Correction 或替代解释会削弱此洞察>
+- 用户语言：<用户自己的说法/待用户命名>
 - 特殊期影响：无/有，说明
 - 与上版本对比：新增/验证/修订/推翻
 - CONFLICT 影响：新增/更新/关闭/无
@@ -70,6 +75,7 @@
 1. <需要用户确认的洞察>
 2. <可能的 Correction>
 3. <可关闭的 CONFLICT>
+4. <需要用户重命名或确认是否为稳定特质的问题>
 
 ---
 

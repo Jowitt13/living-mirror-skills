@@ -12,6 +12,7 @@
 - 第二轮：按最多 16 个主题纵向蒸馏，产出主题报告；第 16 主题为可选敏感主题，必须获得用户明确同意。
 - 合并原则：以已完成主题为骨架，编织时间线深度和 verbatim 证据。不简化、不删减。
 - 证据纪律：每条洞察附证据等级、sender 验证和置信度。
+- 动态判断：重要洞察需标注模式类型、情境权重、三段置信度和可推翻条件。
 
 ---
 
@@ -25,7 +26,12 @@
 
 - 证据：[verbatim] YYYY-MM-DD | source=<source> | sender=<sender>(已验证) | "<克制引用>"
 - 证据：[artifact] <统计/文件/行为痕迹>
-- 置信度：高/中/低
+- 模式类型：stable_trait / stage_state / special_period_response / relationship_triggered / pending_pattern
+- 情境权重：time=<...>; relationship=<...>; body=<...>; event=<...>; medium=<...>
+- 置信度：evidence=高/中/低；interpretation=高/中/低；stability=高/中/低
+- 事实/解释/命名：fact=<...>; interpretation=<...>; temporary_name=<...>
+- 可推翻条件：<什么证据、Correction 或替代解释会削弱此洞察>
+- 用户语言：<用户自己的命名/说法；没有则写待用户命名>
 - 状态：[新增 YYYY-MM] / [修订 YYYY-MM] / 待验证 / 已被 CORR-XXX 推翻
 
 ### ② 行为与决策模式
@@ -143,6 +149,22 @@
 ## 本月 Correction
 
 - CORR-XXX：<被推翻洞察> -> <修正后表述>
+
+---
+
+## 变化时间线
+
+| 模式 | 首次出现 | 增强/减弱 | 当前状态 | 证据 |
+|---|---|---|---|---|
+| <temporary_name> | YYYY-MM | <说明> | 稳定/阶段性/待验证/已推翻 | <证据索引> |
+
+---
+
+## 验证问题清单
+
+1. <需要用户确认、否定或重命名的问题>
+2. <低稳定性但重要的洞察问题>
+3. <可能关闭或升级的 CONFLICT 问题>
 
 ---
 

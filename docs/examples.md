@@ -80,3 +80,32 @@ Update `corrections.md`:
 - Distiller reflection: special-period data should not become a stable trait.
 ```
 
+## Example 5: Dynamic Mirror Rules
+
+User request:
+
+```text
+Help me understand whether this is really my personality or just a stressful period.
+```
+
+Good output:
+
+```markdown
+### "Disappearing when cornered" (temporary name)
+
+- Fact: During two deadline-heavy periods, the user sent fewer replies and used shorter sentences in conflict threads.
+- Interpretation: This may be a self-protection pattern under pressure, not necessarily a stable interpersonal trait.
+- Pattern type: special_period_response / pending_pattern
+- Context weight: time=deadline periods; relationship=partner and work chats; body=unknown; event=high workload; medium=text
+- Evidence: [artifact] reply density changed in two marked periods; [verbatim] only after sender verification
+- Confidence: evidence=medium; interpretation=medium; stability=low
+- Falsifiability: If the same pattern appears outside stress periods across multiple relationships, stability confidence rises; if the user says they were deliberately unavailable for logistical reasons, revise.
+- User language: pending user naming
+```
+
+Bad output:
+
+```text
+You are avoidant.
+```
+

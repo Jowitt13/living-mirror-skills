@@ -1,6 +1,6 @@
 ---
 name: living-mirror
-description: 见己镜 Living Mirror - 从用户的聊天记录/flomo/日记里蒸馏出带证据、带置信度、允许矛盾、可被推翻的自画像。当用户说"蒸馏自己""自画像""理解自己""自我认知""分析我的聊天记录"时触发。支持两轮蒸馏（按时间段 + 最多16主题纵向）+ sender全验证 + CONFLICT追踪 + Correction机制。
+description: 见己镜 Living Mirror - 从用户的聊天记录/flomo/日记/语音转录里蒸馏出带证据、三段置信度、情境权重、允许矛盾、可被推翻的自画像。当用户说"蒸馏自己""自画像""理解自己""自我认知""分析我的聊天记录"时触发。支持两轮蒸馏（按时间段 + 最多16主题纵向）+ sender全验证 + CONFLICT追踪 + Correction机制 + 状态/特质区分。
 version: "1.0"
 updated: "2026-07-07"
 platforms: [claude-code]
@@ -35,7 +35,7 @@ triggers:
 
 ```
 ① 数据采集层：聊天记录 + flomo/日记 -> 统一碎片格式
-② 蒸馏框架层：Part A 自我记忆11维度（基础5 + v0.4/v0.5扩展6）+ Part B 人格5层 + 四套机制
+② 蒸馏框架层：Part A 自我记忆11维度（基础5 + v0.4/v0.5扩展6）+ Part B 人格5层 + 四套机制 + 动态镜像规则
 ③ 输出层：自画像 + conflicts + corrections + changelog + manifest
 ```
 
@@ -86,6 +86,10 @@ impression -> 蒸馏器推断，最低级，必须配原文或 artifact
 
 月度 merge 不覆盖旧结论。新增标 `[新增 YYYY-MM]`，修订标 `[修订 YYYY-MM]`，旧版本归档到 `archive/`，`manifest.json` 记录版本元数据。细则见 `references/merge-guide.md`。
 
+### 5. 动态镜像规则
+
+重要洞察必须区分稳定特质、阶段状态、特殊时期反应、关系触发模式或待验证模式；把置信度拆成 evidence / interpretation / stability；并写出什么证据会推翻它。细则见 `references/dynamic-mirror-rules.md`。
+
 ## 关键防翻车规则
 
 1. 凡涉及"谁说了什么""谁做了什么"的判断，必须回原始数据验证 sender。先读 `references/sender-verification.md`，并用 `scripts/verify_sender.py` 辅助。
@@ -93,6 +97,7 @@ impression -> 蒸馏器推断，最低级，必须配原文或 artifact
 3. 每个时间段/主题开头强制标注特殊时期。凡涉及"下降/减少/边缘化"判断，先排除考试周、假期、生病期、重大事件期。见 `references/special-period.md`。
 4. 优先采信用户自我报告；量化数据只做描述，不做定性终审。
 5. 如涉及第 16 主题（亲密/性表达），先确认用户明确同意；不同意或犹豫时直接跳过，不追问、不推断。
+6. 不把一次性状态写成永久人格；需要判断稳定性、情境权重或可推翻条件时，先读 `references/dynamic-mirror-rules.md`。
 
 ## 标准流程
 
@@ -168,6 +173,7 @@ Step 7: 等用户复核
 - 使用 verbatim 或判断谁做了什么：读 `references/sender-verification.md`
 - 使用关键词筛选：读 `references/keyword-usage.md`
 - 分析特殊时期：读 `references/special-period.md`
+- 判断状态/特质、情境权重、三段置信度、可推翻条件：读 `references/dynamic-mirror-rules.md`
 - 写自画像/批次/主题报告：读对应 template
 - 合并两轮蒸馏结果或做版本管理：读 `references/merge-guide.md`
 
