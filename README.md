@@ -1,4 +1,4 @@
-# Living Mirror Skills
+# Living Mirror Skills v0.6
 
 > A verifiable mirror for your inner life: turn local chat logs, notes, and journals into an evidence-backed self portrait.
 
@@ -7,6 +7,8 @@ Language: English | [简体中文](README.zh-CN.md)
 **Living Mirror** is the public name for this self-distillation skill pack. It reads your fragmented records, such as chat histories, flomo notes, journals, and voice transcripts, and helps an AI agent produce a self portrait that is evidence-backed, confidence-scored, contradiction-aware, correctable, and versioned.
 
 It is not a personality clone. It is a mirror that can revise itself, admit uncertainty, and learn from correction.
+
+Current framework version: **v0.6**.
 
 ## Local Voice Ingestion
 
@@ -68,7 +70,7 @@ The framework has three layers:
 2. Distillation layer
    Part A: 11 self-memory dimensions
    Part B: five personality layers
-   Evidence grading + CONFLICT tracking + Correction + versioning + dynamic mirror rules
+   Evidence grading + CONFLICT tracking + Correction + versioning + v0.6 dynamic mirror rules
 
 3. Output layer
    Self portrait + conflicts + corrections + changelog + manifest
@@ -94,9 +96,9 @@ v0.4 expands the longitudinal map from 10 themes to 15 by adding food preference
 
 v0.5 adds a 16th optional sensitive theme: intimacy / sexuality expression. This theme is off by default, must be explicitly authorized by the user, and can be skipped without affecting the main workflow. When enabled, it requires stricter privacy handling, redacted quotes, sender verification, and no moralizing or pathologizing.
 
-### Dynamic Mirror Rules
+### v0.6 Dynamic Mirror Rules
 
-Living Mirror now includes a dynamic judgment layer for deeper and safer interpretation. Important insights should state:
+Living Mirror v0.6 unifies the dynamic judgment layer into a named framework version. Important insights should state:
 
 - Which human-understanding dimension is being used: body/energy, shame/defense, desire-action gap, aesthetic order, role switching, agency, attention rhythm, meaning narrative, boundaries, or repair.
 - Whether the pattern is a stable trait, stage state, special-period response, relationship-triggered pattern, or pending pattern.
@@ -108,6 +110,8 @@ Living Mirror now includes a dynamic judgment layer for deeper and safer interpr
 - The user's own language for the pattern, when available.
 
 This makes the framework better at describing living people instead of freezing them into labels.
+
+v0.6 also adds a machine-readable schema, a quality-check script, a synthetic demo artifact, visual templates, and this repository changelog.
 
 ### Part B: Five Personality Layers
 
@@ -159,6 +163,22 @@ The dynamic mirror rules prevent overclaiming. A powerful quote can make evidenc
 ### Counter-Evidence Index
 
 Important insights can carry `CE-XXX` entries. Each entry links a claim to an exception, contrary artifact, user correction, or alternative explanation, then marks whether it weakens, narrows, overturns, or creates a CONFLICT for the insight.
+
+### Schema and Quality Check
+
+Each package includes:
+
+```text
+references/insight-schema-v0.6.json
+scripts/quality_check_distillation.py
+```
+
+Run the quality checker on a Markdown self portrait or a structured JSON insight file:
+
+```bash
+python scripts/quality_check_distillation.py --input self-portrait-YYYY-MM.md --output quality-report.md
+python scripts/quality_check_distillation.py --input insights.json --json quality-findings.json
+```
 
 ## Optional Outputs
 
@@ -284,10 +304,11 @@ python scripts/verify_sender.py --input raw/merged.jsonl --keyword "自由" --st
 5. Run a first pass by time period.
 6. Run a second pass by up to 16 longitudinal themes; theme 16 is optional and requires explicit user consent.
 7. Verify sender for every key quote.
-8. Apply dynamic mirror rules: human-understanding dimension, state/trait, context weight, three-part confidence, fact/interpretation/name, counter-evidence index, user-language priority, and falsifiability.
-9. Ask the user to review each theme report.
-10. Merge the reports into `self-portrait-YYYY-MM.md`.
-11. Update `manifest.json`, `changelog.md`, `conflicts.md`, and `corrections.md`.
+8. Apply v0.6 dynamic mirror rules: human-understanding dimension, state/trait, context weight, three-part confidence, fact/interpretation/name, counter-evidence index, user-language priority, and falsifiability.
+9. Run `quality_check_distillation.py` for a structural pass.
+10. Ask the user to review each theme report.
+11. Merge the reports into `self-portrait-YYYY-MM.md`.
+12. Update `manifest.json`, `changelog.md`, `conflicts.md`, and `corrections.md`.
 
 ## Repository Structure
 
@@ -299,11 +320,14 @@ python scripts/verify_sender.py --input raw/merged.jsonl --keyword "自由" --st
 │   └── claude-code/
 ├── docs/
 │   ├── examples.md
+│   ├── demo-v0.6-self-portrait.md
+│   ├── visual-templates.md
 │   ├── design-lineage.md
 │   ├── local-voice-ingestion.md
 │   ├── privacy-and-safety.md
 │   └── platform-notes.md
 ├── LICENSE
+├── CHANGELOG.md
 └── README.md
 ```
 
@@ -314,6 +338,13 @@ SKILL.md
 agents/openai.yaml
 references/
 scripts/
+```
+
+Key v0.6 files inside every package:
+
+```text
+references/insight-schema-v0.6.json
+scripts/quality_check_distillation.py
 ```
 
 ## Privacy Principles

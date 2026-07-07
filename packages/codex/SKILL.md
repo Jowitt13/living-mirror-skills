@@ -3,7 +3,7 @@ name: living-mirror
 description: 见己镜 Living Mirror：自我蒸馏记忆系统。从用户本地聊天记录、flomo、日记、语音转录等碎片数据中，蒸馏出带证据、三段置信度、情境权重、反证索引、用户语言优先、允许矛盾、可被推翻、可回滚的自画像。Use when the user asks to "蒸馏自己", build a self portrait, analyze chat records, understand themselves, run monthly distillation, track CONFLICTs, apply Corrections, verify senders for verbatim quotes, separate state vs trait, build a counter-evidence index, or merge time-batch and theme-based self-distillation reports.
 ---
 
-# 见己镜 Living Mirror
+# 见己镜 Living Mirror v0.6
 
 Codex 版说明：本版本的 frontmatter 只使用 `name` 和 `description`，以便通过 Codex skill 校验和自动发现。WorkBuddy/Claude Code 触发词被合并进 description。
 
@@ -25,7 +25,7 @@ Codex 版说明：本版本的 frontmatter 只使用 `name` 和 `description`，
 
 ```
 ① 数据采集层：聊天记录 + flomo/日记 -> 统一碎片格式
-② 蒸馏框架层：Part A 自我记忆11维度（基础5 + v0.4/v0.5扩展6）+ Part B 人格5层 + 四套机制 + 动态镜像规则
+② 蒸馏框架层：Part A 自我记忆11维度（基础5 + v0.4/v0.5扩展6）+ Part B 人格5层 + 四套机制 + v0.6 动态镜像规则
 ③ 输出层：自画像 + conflicts + corrections + changelog + manifest
 ```
 
@@ -79,6 +79,12 @@ impression -> 蒸馏器推断，最低级，必须配原文或 artifact
 ### 5. 动态镜像规则
 
 重要洞察必须区分稳定特质、阶段状态、特殊时期反应、关系触发模式或待验证模式；把置信度拆成 evidence / interpretation / stability；分离事实/解释/命名；优先使用用户语言；并维护反证索引。细则见 `references/dynamic-mirror-rules.md`。
+
+v0.6 还提供机器可读 schema 和自动质检脚本：
+
+```bash
+python scripts/quality_check_distillation.py --input self-portrait-YYYY-MM.md --output quality-report.md
+```
 
 ## 关键防翻车规则
 
@@ -164,6 +170,8 @@ Step 7: 等用户复核
 - 使用关键词筛选：读 `references/keyword-usage.md`
 - 分析特殊时期：读 `references/special-period.md`
 - 判断状态/特质、情境权重、三段置信度、事实/解释/命名、反证索引、用户语言优先、可推翻条件：读 `references/dynamic-mirror-rules.md`
+- 需要结构化字段约束：读 `references/insight-schema-v0.6.json`
+- 需要自动检查自画像或主题报告：运行 `scripts/quality_check_distillation.py`
 - 写自画像/批次/主题报告：读对应 template
 - 合并两轮蒸馏结果或做版本管理：读 `references/merge-guide.md`
 
