@@ -109,3 +109,21 @@ Bad output:
 You are avoidant.
 ```
 
+## Example 6: Counter-Evidence Index
+
+When an insight has exceptions, do not bury them in prose. Give the exception an ID and show how it changes confidence.
+
+```markdown
+### INSIGHT-003 "Needs distance before repair" (temporary name)
+
+- Fact: In three conflict threads, the user stopped replying for several hours before returning with a calmer explanation.
+- Interpretation: Distance may be a regulation step before repair.
+- Pattern type: relationship_triggered / pending_pattern
+- Confidence: evidence=medium; interpretation=medium; stability=low
+- Counter-evidence index: CE-001
+
+| ID | Challenges | Counter-evidence | Strength | Status | Effect |
+|---|---|---|---|---|---|
+| CE-001 | INSIGHT-003 | In one family thread, the user repaired immediately without withdrawing. | medium | open | narrows this pattern to some relationship contexts |
+```
+

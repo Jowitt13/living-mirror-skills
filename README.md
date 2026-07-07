@@ -29,6 +29,7 @@ Most personal-memory projects try to make an assistant "sound like you" or remem
 - It lets the user overturn the analysis through a Correction layer.
 - It keeps versions so the portrait can evolve and roll back.
 - It separates stable traits from temporary states, relationship-triggered patterns, and special-period reactions.
+- It keeps counter-evidence visible instead of hiding exceptions inside prose.
 
 The result is a living self portrait, not a fixed label.
 
@@ -97,11 +98,13 @@ v0.5 adds a 16th optional sensitive theme: intimacy / sexuality expression. This
 
 Living Mirror now includes a dynamic judgment layer for deeper and safer interpretation. Important insights should state:
 
+- Which human-understanding dimension is being used: body/energy, shame/defense, desire-action gap, aesthetic order, role switching, agency, attention rhythm, meaning narrative, boundaries, or repair.
 - Whether the pattern is a stable trait, stage state, special-period response, relationship-triggered pattern, or pending pattern.
 - Which context shaped the evidence: time, relationship, body/energy state, environment, event, or medium.
 - Three confidence scores: evidence confidence, interpretation confidence, and stability confidence.
 - The difference between fact, interpretation, and a temporary pattern name.
 - What would overturn or weaken the insight.
+- Which counter-evidence entries challenge the insight.
 - The user's own language for the pattern, when available.
 
 This makes the framework better at describing living people instead of freezing them into labels.
@@ -153,6 +156,10 @@ Monthly updates do not overwrite the old portrait. New insights, revisions, conf
 
 The dynamic mirror rules prevent overclaiming. A powerful quote can make evidence confidence high, while stability confidence remains low. Every important insight should say what context shaped it and what future evidence or user correction would overturn it.
 
+### Counter-Evidence Index
+
+Important insights can carry `CE-XXX` entries. Each entry links a claim to an exception, contrary artifact, user correction, or alternative explanation, then marks whether it weakens, narrows, overturns, or creates a CONFLICT for the insight.
+
 ## Optional Outputs
 
 Besides the full self portrait, the skill can produce:
@@ -161,6 +168,10 @@ Besides the full self portrait, the skill can produce:
 - A relationship map organized by relationship type or a consented specific relationship.
 - A change timeline showing when patterns appeared, intensified, softened, or were corrected.
 - A validation question list for the user to confirm, reject, or rename low-confidence insights.
+- An evidence ledger with supporting evidence, counter-evidence, confidence, and status.
+- A context dashboard showing which contexts are shaping the current portrait.
+- A repair map for conflict, apology, re-contact, and non-repair patterns.
+- A naming glossary that preserves the user's own phrases before external labels.
 
 ## Three Platform Versions
 
@@ -273,7 +284,7 @@ python scripts/verify_sender.py --input raw/merged.jsonl --keyword "自由" --st
 5. Run a first pass by time period.
 6. Run a second pass by up to 16 longitudinal themes; theme 16 is optional and requires explicit user consent.
 7. Verify sender for every key quote.
-8. Apply dynamic mirror rules: state/trait, context weight, three-part confidence, and falsifiability.
+8. Apply dynamic mirror rules: human-understanding dimension, state/trait, context weight, three-part confidence, fact/interpretation/name, counter-evidence index, user-language priority, and falsifiability.
 9. Ask the user to review each theme report.
 10. Merge the reports into `self-portrait-YYYY-MM.md`.
 11. Update `manifest.json`, `changelog.md`, `conflicts.md`, and `corrections.md`.

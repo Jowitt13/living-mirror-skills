@@ -33,6 +33,12 @@ For important insights, separate:
 
 A quote can be real and sender-verified while the broader interpretation is still uncertain. Mark context weight such as stress period, illness, relationship role, or medium before calling a pattern stable.
 
+## Counter-Evidence Safety
+
+Do not omit exceptions just because they make the portrait less neat. Important counter-evidence should be visible as `CE-XXX` entries and linked to the insight it challenges.
+
+Strong counter-evidence should lower stability confidence, narrow the claim, create a CONFLICT, or overturn the insight.
+
 ## Sender Safety
 
 Never make a claim about who said or did something from a summary alone. Go back to the original data and verify fields such as:

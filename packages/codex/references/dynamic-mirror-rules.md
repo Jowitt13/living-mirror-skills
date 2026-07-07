@@ -4,15 +4,20 @@ Use these rules when writing a self portrait, merging theme reports, deciding wh
 
 The goal is to keep Living Mirror from becoming a fixed personality labeler. A person is partly stable, partly contextual, partly changing, and partly still unknown.
 
-## Additional Observation Domains
+## Human Understanding Dimensions
 
-These domains can be added to the 16-theme framework when the source data supports them. Do not force them when evidence is thin.
+These dimensions can be added to the 16-theme framework when the source data supports them. Do not force them when evidence is thin. Use them as lenses for understanding the person behind the records, not as extra labels to fill.
 
 1. **Body and energy state**: sleep, fatigue, appetite, sensory load, recovery rhythm, illness periods, and how the body changes emotional or social capacity.
 2. **Shame, defense, and self-protection**: moments where the user hides, jokes, withdraws, overexplains, attacks first, freezes, or avoids being seen.
 3. **Desire-action gap**: what the user repeatedly wants, says they value, or imagines doing, compared with what they actually choose under time, money, fear, habit, or relationship pressure.
 4. **Aesthetic and order system**: preferred texture, color, density, cleanliness, ritual, digital/physical organization, and the kind of environment that makes the user feel like themselves.
 5. **Relationship role switching**: how the user changes between partner, child, friend, creator, worker, caregiver, learner, leader, or protected person.
+6. **Agency and control**: where the user seeks autonomy, where they surrender control, and what makes them feel trapped or free.
+7. **Attention and learning rhythm**: how curiosity starts, deepens, scatters, or becomes mastery.
+8. **Meaning and narrative**: the stories the user uses to explain their life, wounds, luck, effort, love, failure, and becoming.
+9. **Boundary and consent pattern**: how the user says yes, says no, delays, tests safety, or changes their mind.
+10. **Repair and reconciliation**: how the user apologizes, reopens contact, makes meaning after conflict, or decides not to repair.
 
 ## State vs Trait
 
@@ -59,7 +64,7 @@ Separate three layers:
 
 Never let a poetic label outrun the evidence.
 
-## Falsifiability
+## Falsifiability and Counter-Evidence
 
 Every important insight should include what would overturn or weaken it:
 
@@ -69,6 +74,24 @@ Every important insight should include what would overturn or weaken it:
 - What stronger alternative explanation exists?
 
 If there is no imaginable way to overturn an insight, it is probably too vague.
+
+Maintain a counter-evidence index for important insights. Counter-evidence is not a nuisance; it is part of the portrait.
+
+Use IDs like `CE-001` and link them to the insight they challenge:
+
+```markdown
+| ID | Challenges | Counter-evidence | Strength | Status | Effect |
+|---|---|---|---|---|---|
+| CE-001 | INSIGHT-003 | <source/date/artifact or paraphrased quote> | low/medium/high | open/resolved/overridden | weakens / narrows / overturns / creates CONFLICT |
+```
+
+Rules:
+
+- Add counter-evidence when the data shows a meaningful exception, reversal, or alternative explanation.
+- Do not hide counter-evidence inside prose. Give it an ID.
+- If counter-evidence is strong, lower `stability_confidence` or move the insight to `pending_pattern`.
+- If counter-evidence is unresolved, link it to `conflicts.md`.
+- If the user explains the counter-evidence, update the index instead of deleting it.
 
 ## User-Language Priority
 
@@ -94,6 +117,10 @@ Besides the full self portrait, Living Mirror can produce smaller outputs:
 - **Relationship map**: patterns by relationship type or specific consented relationship.
 - **Change timeline**: when a pattern appeared, intensified, softened, or was corrected.
 - **Validation questions**: concrete questions for the user to confirm, reject, or rename insights.
+- **Evidence ledger**: a compact table of insights, supporting evidence, counter-evidence, and current confidence.
+- **Context dashboard**: a non-quantified overview of which contexts shape the current portrait most.
+- **Repair map**: how the user repairs conflict, restores safety, or decides not to continue a relationship.
+- **Naming glossary**: user-owned phrases for recurring patterns, with external labels kept secondary.
 
 ## Insight Card Template
 
@@ -109,7 +136,7 @@ Use this compact card inside theme reports or self portraits:
 - Evidence: [verbatim/artifact/impression] <source, date, sender verification, or statistic>
 - Confidence: evidence=<high|medium|low>; interpretation=<high|medium|low>; stability=<high|medium|low>
 - Falsifiability: <what would overturn or weaken this>
+- Counter-evidence index: CE-XXX / none found / pending search
 - User language: <user's own wording if available; otherwise "pending user naming">
 - Status: [new YYYY-MM] / [revised YYYY-MM] / pending / overturned by CORR-XXX
 ```
-
