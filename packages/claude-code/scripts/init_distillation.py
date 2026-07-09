@@ -20,11 +20,11 @@ def main() -> None:
     configure_stdio()
     parser = argparse.ArgumentParser(description="Initialize distillation directory structure.")
     parser.add_argument("workspace", type=Path, help="Workspace path where distillation/ will be created.")
-    parser.add_argument("--version", default="v1.0", help="Initial portrait version.")
+    parser.add_argument("--version", default="v0.9", help="Initial portrait version.")
     args = parser.parse_args()
 
     root = args.workspace / "distillation"
-    for name in ("raw", "v2", "archive"):
+    for name in ("raw", "v2", "reviews", "actions", "exports", "archive"):
         (root / name).mkdir(parents=True, exist_ok=True)
 
     today = datetime.now().strftime("%Y-%m-%d")
@@ -42,10 +42,17 @@ def main() -> None:
                 {
                     "current_version": args.version,
                     "current_version_file": portrait_name,
-                    "framework_version": "v2.0",
+                    "framework_version": "Living Mirror v0.9",
                     "updated_at": datetime.now().isoformat(timespec="seconds"),
                     "versions": [],
                     "data_sources": {},
+                    "consent_scope": {
+                        "source_scope": "unset",
+                        "time_scope": "unset",
+                        "relationship_scope": "unset",
+                        "theme_scope": "unset",
+                        "output_scope": "private",
+                    },
                 },
                 ensure_ascii=False,
                 indent=2,

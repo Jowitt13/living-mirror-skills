@@ -1,7 +1,7 @@
 interface:
   display_name: "见己镜 Living Mirror"
-  short_description: "把本地碎片记录蒸馏成可验证的自画像"
-  default_prompt: "Use $living-mirror to turn my local records into an evidence-backed, correctable self portrait."
+  short_description: "把本地碎片记录变成可验证、可复核、可行动的自画像"
+  default_prompt: "Use $living-mirror to diagnose my local records, build an evidence-backed self portrait, create a review queue, and suggest one safe 7-day experiment."
 policy:
   allow_implicit_invocation: true
 

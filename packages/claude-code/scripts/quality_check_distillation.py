@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Check Living Mirror v0.6 self-portrait artifacts for required structure."""
+"""Check Living Mirror v0.9 self-portrait artifacts for required structure."""
 
 from __future__ import annotations
 
@@ -29,6 +29,7 @@ REQUIRED_INSIGHT_FIELDS = [
     "user_language",
     "status",
 ]
+PRODUCT_FIELDS = ["review_state", "privacy_level", "consent_scope", "action_translation"]
 
 CONFIDENCE_VALUES = {"high", "medium", "low"}
 PATTERN_TYPES = {
@@ -81,7 +82,7 @@ def validate_insight_json(insight: dict[str, Any], index: int, findings: list[Fi
         add(findings, "error", "pattern_type", f"{label}: invalid or missing pattern_type")
 
     if insight.get("human_dimension") not in HUMAN_DIMENSIONS:
-        add(findings, "warning", "human_dimension", f"{label}: human_dimension is missing or not v0.6-compatible")
+        add(findings, "warning", "human_dimension", f"{label}: human_dimension is missing or not Living Mirror-compatible")
 
     confidence = insight.get("confidence")
     if not isinstance(confidence, dict):
@@ -118,7 +119,18 @@ def validate_insight_json(insight: dict[str, Any], index: int, findings: list[Fi
         add(findings, "warning", "user_language", f"{label}: user_language.preferred_phrase is missing")
 
 
-def validate_json_artifact(path: Path) -> list[Finding]:
+def validate_product_fields(insight: dict[str, Any], index: int, findings: list[Finding]) -> None:
+    label = str(insight.get("id") or f"insight[{index}]")
+    for field in PRODUCT_FIELDS:
+        if field not in insight:
+            add(findings, "warning", "product_field", f"{label}: v0.9 product field `{field}` is missing")
+    if insight.get("privacy_level") not in {None, "private", "shareable", "public"}:
+        add(findings, "error", "privacy_level", f"{label}: privacy_level must be private/shareable/public")
+    if insight.get("review_state") not in {None, "unreviewed", "confirmed", "corrected", "rejected", "needs_more_evidence"}:
+        add(findings, "error", "review_state", f"{label}: review_state is not v0.9-compatible")
+
+
+def validate_json_artifact(path: Path, product: bool = False) -> list[Finding]:
     data = load_json(path)
     findings: list[Finding] = []
     insights = data.get("insights") if isinstance(data, dict) else data
@@ -128,6 +140,8 @@ def validate_json_artifact(path: Path) -> list[Finding]:
     for index, insight in enumerate(insights, 1):
         if isinstance(insight, dict):
             validate_insight_json(insight, index, findings)
+            if product:
+                validate_product_fields(insight, index, findings)
         else:
             add(findings, "error", "json_shape", f"insight[{index}] is not an object")
     return findings
@@ -137,7 +151,7 @@ def has_any(text: str, patterns: list[str]) -> bool:
     return any(re.search(pattern, text, flags=re.IGNORECASE) for pattern in patterns)
 
 
-def validate_markdown_artifact(path: Path) -> list[Finding]:
+def validate_markdown_artifact(path: Path, product: bool = False) -> list[Finding]:
     text = path.read_text(encoding="utf-8")
     findings: list[Finding] = []
     checks = [
@@ -150,9 +164,17 @@ def validate_markdown_artifact(path: Path) -> list[Finding]:
         ("pattern_type", [r"模式类型", r"Pattern type", r"stable_trait|stage_state|pending_pattern"]),
         ("falsifiability", [r"可推翻条件", r"Falsifiability"]),
     ]
+    if product:
+        checks.extend(
+            [
+                ("privacy_level", [r"Privacy level", r"隐私等级", r"private|shareable|public"]),
+                ("review_queue", [r"Review Queue", r"复核队列", r"待用户复核"]),
+                ("action_translation", [r"7-Day Experiment", r"行动实验", r"Action Translation"]),
+            ]
+        )
     for code, patterns in checks:
         if not has_any(text, patterns):
-            add(findings, "warning", code, f"{path.name}: missing v0.6 marker `{code}`")
+            add(findings, "warning", code, f"{path.name}: missing Living Mirror marker `{code}`")
 
     insight_like = len(re.findall(r"^(#{2,4}\s+INSIGHT-|#{3,4}\s+|####\s+[A-Z]?\d+)", text, flags=re.MULTILINE))
     if insight_like == 0:
@@ -167,7 +189,7 @@ def validate_markdown_artifact(path: Path) -> list[Finding]:
 def render_markdown(findings: list[Finding]) -> str:
     counts = {level: sum(1 for item in findings if item.level == level) for level in ("error", "warning", "info")}
     lines = [
-        "# Living Mirror v0.6 Quality Check",
+        "# Living Mirror v0.9 Quality Check",
         "",
         f"- Errors: {counts['error']}",
         f"- Warnings: {counts['warning']}",
@@ -186,17 +208,18 @@ def render_markdown(findings: list[Finding]) -> str:
 
 def main() -> None:
     configure_stdio()
-    parser = argparse.ArgumentParser(description="Check Living Mirror v0.6 distillation artifacts.")
+    parser = argparse.ArgumentParser(description="Check Living Mirror v0.9 distillation artifacts.")
     parser.add_argument("--input", required=True, type=Path, help="Markdown or JSON artifact to check.")
     parser.add_argument("--output", type=Path, help="Optional Markdown report path.")
     parser.add_argument("--json", type=Path, help="Optional JSON findings path.")
     parser.add_argument("--fail-on", choices=["error", "warning", "never"], default="error")
+    parser.add_argument("--product", action="store_true", help="Also check v0.9 productization fields.")
     args = parser.parse_args()
 
     if args.input.suffix.lower() == ".json":
-        findings = validate_json_artifact(args.input)
+        findings = validate_json_artifact(args.input, product=args.product)
     else:
-        findings = validate_markdown_artifact(args.input)
+        findings = validate_markdown_artifact(args.input, product=args.product)
 
     report = render_markdown(findings)
     if args.output:

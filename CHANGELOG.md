@@ -1,21 +1,46 @@
 # Changelog
 
-## v0.6.1 - 2026-07-08
+## v0.9 - 2026-07-09
 
-Local Voice Ingestion: added a WeChat-SILK specialization with multiprocess decoding.
+Living Mirror v0.9 productizes the framework for reuse, sharing, and community templates.
 
 Added:
 
-- `scripts/batch_transcribe_wechat_silk.py` in every package: transcribes WeChat `.silk` voice exports with a user-supplied local FunASR model.
-- Performance design: `pilk` decodes SILK directly to 16 kHz (no manual resampling), all SILK files are pre-decoded on CPU cores in parallel, then a single process runs batched FunASR inference so the GPU is fully saturated (utilization ~9% -> ~100%).
-- Filename parsing recovers `timestamp` / `sender_wxid`; `--me-wxid` infers `is_self`.
-- Output shape matches `batch_transcribe_local_voice.py`: `transcripts.jsonl` + `manifest.json` (resume) + `summary.md` + `run_summary.json`.
+- Community template kit: `references/community-template-kit.md`.
+- Reusable export templates under `assets/templates/`.
+- Public case-study shape for GitHub, blogs, slides, and social posts.
+- Obsidian-style vault index template.
+- v0.9 insight schema with optional `review_state`, `privacy_level`, `consent_scope`, and `action_translation` fields.
+- Productization documentation: `docs/productization-and-community.md`.
 
-Docs:
+Changed:
 
-- `docs/local-voice-ingestion.md` now documents the WeChat SILK path and the py3.13 install caveat (`pip install funasr --no-deps` to bypass the `editdistance` build failure).
-- README and README.zh-CN add a "WeChat SILK Voices (multiprocess-optimized)" subsection.
-- `packages/workbuddy/SKILL.md` Local Voice Ingestion section references the SILK script.
+- README and README.zh-CN now describe v0.9 as the current framework version.
+- All three platform packages now route agents through onboarding, privacy, action, relationship, and community-template references.
+- Quality checker now reports as v0.9 and supports `--product` checks.
+
+## v0.8 - 2026-07-09
+
+Living Mirror v0.8 turns self-understanding into reviewable action and relationship workflows.
+
+Added:
+
+- Action translation reference for 7-day experiments, conversation scripts, boundary scripts, repair scripts, decision lenses, and environment adjustments.
+- Relationship pack for relationship maps, conflict loops, repair maps, and consent-safe relationship analysis.
+- Review queue script: `scripts/make_review_queue.py`.
+- Weekly experiment and relationship-map templates.
+
+## v0.7 - 2026-07-09
+
+Living Mirror v0.7 lowers the barrier to starting and strengthens privacy.
+
+Added:
+
+- Onboarding and data diagnosis reference.
+- Cold-start interview mode for users without organized records.
+- Data diagnosis script: `scripts/diagnose_distillation_inputs.py`.
+- Privacy, consent, redaction, and forgetting/deletion rules.
+- Public/shareable artifact redaction script: `scripts/redact_public_artifact.py`.
 
 ## v0.6 - 2026-07-07
 
@@ -36,9 +61,8 @@ Added:
 
 Changed:
 
-- README and README.zh-CN now describe v0.6 as the current framework layer.
-- Skill reference routing now points agents to the v0.6 schema and quality checker.
-- Self-portrait and theme-report templates now require counter-evidence and user-language fields.
+- Skill reference routing points agents to the v0.6 schema and quality checker.
+- Self-portrait and theme-report templates require counter-evidence and user-language fields.
 
 ## v0.5 - 2026-07-07
 

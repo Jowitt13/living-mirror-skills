@@ -1,4 +1,4 @@
-# 自我蒸馏框架 v2.0 + v0.4/v0.5/v0.6 扩展
+# 自我蒸馏框架 v0.9
 
 ## 定义
 
@@ -6,11 +6,13 @@
 
 Living Mirror 不是人格克隆，也不是让 AI 模仿用户说话。它是一面可验证、可修正、会迭代的镜子。
 
-## 三层架构
+## 五层架构
 
-1. 数据采集层：把聊天记录、flomo、日记、语音转录等数据统一为碎片格式，保留来源、时间戳、sender、会话、内容类型。
-2. 蒸馏框架层：用 Part A 自我记忆 11 维度、Part B 人格 5 层，以及证据分级、CONFLICT、Correction、版本管理四套机制进行分析。
-3. 输出层：生成自画像、批次报告、主题报告、conflicts、corrections、changelog、manifest。
+1. 入门层：冷启动访谈、数据体检、同意范围和隐私等级。
+2. 数据采集层：把聊天记录、flomo、日记、语音转录等数据统一为碎片格式，保留来源、时间戳、sender、会话、内容类型。
+3. 蒸馏框架层：用 Part A 自我记忆 11 维度、Part B 人格 5 层，以及证据分级、CONFLICT、Correction、版本管理四套机制进行分析。
+4. 复核与行动层：生成复核队列，把已确认洞察转成 7 天实验、沟通脚本、边界脚本或关系地图。
+5. 输出层：生成自画像、批次报告、主题报告、conflicts、corrections、changelog、manifest、actions、reviews 和 exports。
 
 ## 统一碎片格式
 
@@ -74,10 +76,40 @@ v0.6 将前面的动态判断统一成正式版本。Living Mirror 不只问"这
 5. 为重要洞察维护 `CE-XXX` 反证索引，记录例外、相反证据和替代解释。
 6. 写出可推翻条件：什么新证据、用户纠正或替代解释会削弱这个洞察。
 7. 优先使用用户自己的语言命名模式；理论标签只能作为辅助。
-8. 使用 `insight-schema-v0.6.json` 约束结构化洞察。
+8. 使用 `insight-schema-v0.9.json` 约束结构化洞察；旧的 `insight-schema-v0.6.json` 保留为兼容版本。
 9. 使用 `quality_check_distillation.py` 自动检查自画像或主题报告。
 
 详细规则见 `dynamic-mirror-rules.md`。
+
+## v0.7 入门与信任层
+
+v0.7 解决用户开始前的真实阻碍：
+
+- 没有整理好数据：使用 `light_start` 和冷启动访谈。
+- 数据很杂：运行 `scripts/diagnose_distillation_inputs.py`。
+- 不确定能不能分享：先定义 private / shareable / public 隐私等级。
+- 不想分析某些关系、时期或主题：写入 consent scope。
+- 想删除某个来源：按遗忘/删除规则把相关洞察降级为待复核。
+
+细则见 `onboarding-and-data-diagnosis.md` 和 `privacy-consent-redaction.md`。
+
+## v0.8 行动与关系层
+
+v0.8 让自画像不止停在“说得很准”：
+
+- 用 `make_review_queue.py` 生成用户复核队列。
+- 用 `action-translation.md` 把洞察转成 7 天实验、沟通脚本、边界脚本、修复脚本、决策镜头或环境调整。
+- 用 `relationship-pack.md` 生成关系地图、冲突循环、修复地图。
+
+低稳定性的洞察不能直接变成重大行动，只能变成小而可逆的实验。
+
+## v0.9 产品化与社区模板层
+
+v0.9 让框架可以被更多人 fork、展示和贡献：
+
+- `assets/templates/` 提供冷启动访谈、行动卡、关系地图、公开案例、Obsidian index 等模板。
+- `community-template-kit.md` 定义社区模板的结构和贡献标准。
+- 公开输出必须先按 `privacy-consent-redaction.md` 脱敏。
 
 ## 两轮蒸馏
 
@@ -146,6 +178,12 @@ v0.6 将前面的动态判断统一成正式版本。Living Mirror 不只问"这
 
 用户的裁决高于蒸馏器判断。
 
+完成初稿后，运行：
+
+```bash
+python scripts/make_review_queue.py --input self-portrait-YYYY-MM.md --output reviews/review-queue-YYYY-MM.md
+```
+
 ## 可选输出形态
 
 除完整自画像外，可根据用户需求输出：
@@ -157,3 +195,5 @@ v0.6 将前面的动态判断统一成正式版本。Living Mirror 不只问"这
 - 证据账本：并排呈现支持证据、反证、当前置信度和状态。
 - 情境权重概览：说明哪些时间、关系、身体状态、环境或事件正在影响自画像。
 - 用户语言词典：保存用户自己的命名，把外部理论标签放在次要位置。
+- 7 天行动实验：把确认过的洞察转成小而可逆的行动。
+- 公开脱敏稿：用于 GitHub、博客、Slides、小红书等场景。

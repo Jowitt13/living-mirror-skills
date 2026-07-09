@@ -12,6 +12,9 @@ distillation/
 │   ├── 00-conflict-tracker.md
 │   ├── 01-values-emotions.md
 │   └── ...
+├── reviews/
+├── actions/
+├── exports/
 ├── archive/
 ├── self-portrait-YYYY-MM.md
 ├── conflicts.md
@@ -47,10 +50,17 @@ python scripts/merge_messages.py --messages raw/messages.jsonl --voice raw/voice
 
 ```json
 {
-  "current_version": "v1.0",
+  "current_version": "v0.9",
   "current_version_file": "self-portrait-YYYY-MM.md",
-  "framework_version": "v2.0",
+  "framework_version": "Living Mirror v0.9",
   "updated_at": "YYYY-MM-DDTHH:mm:ss",
+  "consent_scope": {
+    "source_scope": "unset",
+    "time_scope": "unset",
+    "relationship_scope": "unset",
+    "theme_scope": "unset",
+    "output_scope": "private"
+  },
   "data_sources": {
     "wechat": {"status": "active", "merged_file": "raw/merged.jsonl"},
     "flomo": {"status": "optional"}
@@ -66,7 +76,9 @@ python scripts/merge_messages.py --messages raw/messages.jsonl --voice raw/voice
       "conflicts_new": 0,
       "conflicts_closed": 0,
       "corrections": 0,
-      "pending_review": true
+      "pending_review": true,
+      "actions_created": 0,
+      "exports_created": 0
     }
   ]
 }
@@ -85,6 +97,8 @@ python scripts/merge_messages.py --messages raw/messages.jsonl --voice raw/voice
 - 关闭 CONFLICT：
 - Correction：
 - 用户复核状态：
+- 行动转译：
+- 导出/脱敏：
 ```
 
 ## 回滚

@@ -1,0 +1,152 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Jowitt13/living-mirror-skills/insight-schema-v0.9.json",
+  "title": "Living Mirror Insight Schema v0.9",
+  "type": "object",
+  "required": [
+    "id",
+    "fact",
+    "interpretation",
+    "temporary_name",
+    "human_dimension",
+    "pattern_type",
+    "context_weight",
+    "evidence",
+    "confidence",
+    "falsifiability",
+    "counter_evidence_index",
+    "user_language",
+    "status"
+  ],
+  "properties": {
+    "id": { "type": "string", "pattern": "^(INSIGHT|I)-[0-9]{3,}$" },
+    "fact": { "type": "string", "minLength": 1 },
+    "interpretation": { "type": "string", "minLength": 1 },
+    "temporary_name": { "type": "string", "minLength": 1 },
+    "human_dimension": {
+      "type": "string",
+      "enum": [
+        "body_energy",
+        "shame_defense",
+        "desire_action_gap",
+        "aesthetic_order",
+        "relationship_role_switching",
+        "agency_control",
+        "attention_learning_rhythm",
+        "meaning_narrative",
+        "boundary_consent",
+        "repair_reconciliation",
+        "other"
+      ]
+    },
+    "pattern_type": {
+      "type": "string",
+      "enum": [
+        "stable_trait",
+        "stage_state",
+        "special_period_response",
+        "relationship_triggered",
+        "pending_pattern"
+      ]
+    },
+    "context_weight": {
+      "type": "object",
+      "required": ["time", "relationship", "body", "environment", "event", "medium"],
+      "additionalProperties": false,
+      "properties": {
+        "time": { "type": "string" },
+        "relationship": { "type": "string" },
+        "body": { "type": "string" },
+        "environment": { "type": "string" },
+        "event": { "type": "string" },
+        "medium": { "type": "string" }
+      }
+    },
+    "evidence": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["level", "source", "date", "sender_verified", "summary"],
+        "additionalProperties": true,
+        "properties": {
+          "level": { "type": "string", "enum": ["verbatim", "artifact", "impression"] },
+          "source": { "type": "string" },
+          "date": { "type": "string" },
+          "sender_verified": { "type": "boolean" },
+          "summary": { "type": "string" },
+          "quote": { "type": "string" }
+        }
+      }
+    },
+    "confidence": {
+      "type": "object",
+      "required": ["evidence", "interpretation", "stability"],
+      "additionalProperties": false,
+      "properties": {
+        "evidence": { "type": "string", "enum": ["high", "medium", "low"] },
+        "interpretation": { "type": "string", "enum": ["high", "medium", "low"] },
+        "stability": { "type": "string", "enum": ["high", "medium", "low"] }
+      }
+    },
+    "falsifiability": { "type": "string", "minLength": 1 },
+    "counter_evidence_index": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "challenges", "counter_evidence", "strength", "status", "effect"],
+        "additionalProperties": false,
+        "properties": {
+          "id": { "type": "string", "pattern": "^CE-[0-9]{3,}$" },
+          "challenges": { "type": "string" },
+          "counter_evidence": { "type": "string" },
+          "strength": { "type": "string", "enum": ["low", "medium", "high"] },
+          "status": { "type": "string", "enum": ["open", "resolved", "overridden"] },
+          "effect": { "type": "string", "enum": ["weakens", "narrows", "overturns", "creates_conflict"] }
+        }
+      }
+    },
+    "user_language": {
+      "type": "object",
+      "required": ["preferred_phrase", "source", "adopted"],
+      "additionalProperties": false,
+      "properties": {
+        "preferred_phrase": { "type": "string" },
+        "source": { "type": "string", "enum": ["user_self_report", "verbatim", "distiller_pending", "none"] },
+        "adopted": { "type": "boolean" }
+      }
+    },
+    "status": { "type": "string", "enum": ["new", "revised", "pending", "overturned"] },
+    "review_state": {
+      "type": "string",
+      "enum": ["unreviewed", "confirmed", "corrected", "rejected", "needs_more_evidence"]
+    },
+    "privacy_level": {
+      "type": "string",
+      "enum": ["private", "shareable", "public"]
+    },
+    "consent_scope": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "source_scope": { "type": "string" },
+        "time_scope": { "type": "string" },
+        "relationship_scope": { "type": "string" },
+        "theme_scope": { "type": "string" },
+        "output_scope": { "type": "string" }
+      }
+    },
+    "action_translation": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "recommended_use": { "type": "string" },
+        "seven_day_experiment": { "type": "string" },
+        "review_date": { "type": "string" },
+        "stop_condition": { "type": "string" }
+      }
+    }
+  },
+  "additionalProperties": true
+}
+

@@ -1,8 +1,9 @@
 # <用户名或匿名代称> 自画像 · 批次 N · <阶段名>
 
-> 版本：vX.X-batchN | 蒸馏时间：YYYY-MM-DD
+> 版本：vX.X-batchN | 框架：Living Mirror v0.9 | 蒸馏时间：YYYY-MM-DD
 > 数据范围：YYYY-MM-DD ~ YYYY-MM-DD | 数据量：<N> 条
 > 数据源：<source summary>
+> 隐私等级：private / shareable / public | 同意范围：source=<...>; time=<...>; relationship=<...>; theme=<...>; output=<...>
 
 ---
 
@@ -62,6 +63,9 @@
 - 证据：[verbatim] YYYY-MM-DD | source=<source> | sender=<sender>(已验证) | "<克制引用>"
 - 证据：[artifact] <统计/行为痕迹>
 - 置信度：高/中/低
+- 三段置信度：evidence=高/中/低；interpretation=高/中/低；stability=高/中/低
+- 情境权重：time=<...>; relationship=<...>; body=<...>; event=<...>; medium=<...>
+- 可推翻条件：
 - 状态：[新增 YYYY-MM batchN] / 待验证
 
 ### ② 行为与决策模式
@@ -138,6 +142,8 @@
 - 是否有偷懒：<是否过度依赖摘要/关键词>
 - 是否有讨好：<是否回避不舒服发现>
 - Correction 风险：
+- 是否需要进入复核队列：
+- 是否适合行动转译：
 - 下批次重点观察：
   1. <问题>
 

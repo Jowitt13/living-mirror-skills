@@ -127,3 +127,111 @@ When an insight has exceptions, do not bury them in prose. Give the exception an
 | CE-001 | INSIGHT-003 | In one family thread, the user repaired immediately without withdrawing. | medium | open | narrows this pattern to some relationship contexts |
 ```
 
+## Example 7: Cold Start Without Prepared Data
+
+User request:
+
+```text
+I do not have my chat logs ready, but I want to start understanding myself.
+```
+
+Expected flow:
+
+1. Read `references/onboarding-and-data-diagnosis.md`.
+2. Choose `light_start`.
+3. Ask 8 to 20 cold-start questions.
+4. Mark all insights as `pending_pattern` or user self-report.
+5. Add validation questions for later evidence.
+
+Good output:
+
+```markdown
+- Pattern type: pending_pattern
+- Evidence: [impression/user_self_report] based on starter interview
+- Confidence: evidence=medium; interpretation=low; stability=low
+- Falsifiability: check against message records from at least two contexts
+```
+
+## Example 8: Data Diagnosis
+
+User request:
+
+```text
+Before distilling, check whether this folder is usable.
+```
+
+Run:
+
+```bash
+python scripts/diagnose_distillation_inputs.py distillation/raw --output data-diagnosis.md
+```
+
+Expected output:
+
+- recommended mode
+- usable text count
+- audio files needing transcription
+- sender coverage
+- conversation coverage
+- main structural risks
+- next step
+
+## Example 9: Public Redaction
+
+User request:
+
+```text
+Make a public-safe version of this self portrait for GitHub.
+```
+
+Expected flow:
+
+1. Read `references/privacy-consent-redaction.md`.
+2. Set output level to `public`.
+3. Run `scripts/redact_public_artifact.py`.
+4. Manually review the result.
+5. Remove raw private quotes unless explicitly approved.
+
+```bash
+python scripts/redact_public_artifact.py --input self-portrait.md --output public-self-portrait.md --level public --name "Alice,Bob"
+```
+
+## Example 10: Action Translation
+
+User request:
+
+```text
+This insight feels accurate. What should I actually do next week?
+```
+
+Expected flow:
+
+1. Read `references/action-translation.md`.
+2. Use only confirmed or sufficiently supported insights.
+3. Produce one small, reversible 7-day experiment.
+4. Include a stop condition and review date.
+
+```markdown
+## 7-Day Experiment: "I need a little time"
+
+- Linked insight: INSIGHT-003
+- Tiny action: Before replying to a tense message, write one sentence: "I want to answer this well. I need an hour."
+- What to observe: relief, anxiety, response quality, relationship safety
+- Stop condition: stop if the script becomes avoidance or increases risk
+```
+
+## Example 11: Community Template
+
+User request:
+
+```text
+Turn this workflow into a reusable template other people can fork.
+```
+
+Expected flow:
+
+1. Read `references/community-template-kit.md`.
+2. Use `assets/templates/community-use-case.md`.
+3. Include pain point, audience, inputs, workflow, outputs, privacy notes, example, and review step.
+4. Use synthetic or redacted examples only.
+

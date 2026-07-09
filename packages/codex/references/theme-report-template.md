@@ -1,7 +1,8 @@
 # 主题 N：<主题名>（纵向 YYYY-YYYY）
 
-> 蒸馏时间：YYYY-MM-DD | 方法：直接读取原始数据 + sender 验证
+> 蒸馏时间：YYYY-MM-DD | 框架：Living Mirror v0.9 | 方法：直接读取原始数据 + sender 验证
 > 数据范围：<range> | 候选消息：<N> 条 | 关键 verbatim：<N> 条
+> 隐私等级：private / shareable / public | 同意范围：source=<...>; time=<...>; relationship=<...>; theme=<...>; output=<...>
 
 ---
 
@@ -60,6 +61,8 @@
 - 特殊期影响：无/有，说明
 - 与上版本对比：新增/验证/修订/推翻
 - CONFLICT 影响：新增/更新/关闭/无
+- 复核状态：unreviewed / confirmed / corrected / rejected / needs_more_evidence
+- 行动转译：<7 天实验 / 沟通脚本 / 决策镜头 / 暂不转译>
 
 ---
 
@@ -86,6 +89,14 @@
 3. <可关闭的 CONFLICT>
 4. <需要用户重命名或确认是否为稳定特质的问题>
 5. <需要用户解释的反证或例外>
+
+---
+
+## 可行动输出（可选）
+
+| 洞察 | 行动类型 | 微行动 | 观察指标 | 停止条件 |
+|---|---|---|---|---|
+| N-1 | seven_day_experiment / conversation_script / boundary_script / decision_lens |  |  |  |
 
 ---
 

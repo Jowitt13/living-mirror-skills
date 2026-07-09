@@ -1,197 +1,116 @@
 ---
 name: living-mirror
-description: 见己镜 Living Mirror：自我蒸馏记忆系统。从用户本地聊天记录、flomo、日记、语音转录等碎片数据中，蒸馏出带证据、三段置信度、情境权重、反证索引、用户语言优先、允许矛盾、可被推翻、可回滚的自画像。Use when the user asks to "蒸馏自己", build a self portrait, analyze chat records, understand themselves, run monthly distillation, track CONFLICTs, apply Corrections, verify senders for verbatim quotes, separate state vs trait, build a counter-evidence index, or merge time-batch and theme-based self-distillation reports.
+description: 见己镜 Living Mirror v0.9：本地优先的自我蒸馏、数据体检、隐私脱敏、行动转译、关系场景和社区模板系统。从聊天记录、flomo、日记、语音转录等碎片数据中生成带证据、三段置信度、情境权重、反证索引、用户语言优先、允许矛盾、可被推翻、可回滚的自画像。Use when the user asks to 蒸馏自己, build a self portrait, analyze chat records, understand themselves, run monthly distillation, start without enough data, diagnose local inputs, redact a public artifact, create review questions, turn insights into 7-day experiments or scripts, build relationship maps, export Obsidian/Notion/PDF/social templates, or maintain Living Mirror community templates.
 ---
 
-# 见己镜 Living Mirror v0.6
+# 见己镜 Living Mirror v0.9
 
-Codex 版说明：本版本的 frontmatter 只使用 `name` 和 `description`，以便通过 Codex skill 校验和自动发现。WorkBuddy/Claude Code 触发词被合并进 description。
+Living Mirror turns local fragments into a verifiable, correctable, living self portrait. It is not a personality clone and not a therapy replacement. It is a local-first mirror that keeps evidence, uncertainty, contradiction, correction, action, and privacy in the same system.
 
-从用户的碎片记录里（聊天记录/flomo/日记），蒸馏出此刻的他/她，产出一套带证据、带置信度、允许矛盾、可被推翻、可回滚的自画像。
+## Version Stack
 
-不是克隆用户，是给用户一面会迭代、会认错的镜子。
+- **v0.4**: expands longitudinal distillation from 10 themes to 15 themes.
+- **v0.5**: adds optional sensitive theme 16: intimacy/sexuality expression, off by default and requiring explicit consent.
+- **v0.6**: adds dynamic mirror rules: human-understanding dimensions, context weight, three-part confidence, fact/interpretation/name separation, counter-evidence, and user-language priority.
+- **v0.7**: adds onboarding, cold-start interview, data diagnosis, consent scope, privacy levels, redaction, and forgetting/deletion rules.
+- **v0.8**: adds action translation, relationship maps, repair/boundary scripts, and review queues.
+- **v0.9**: adds community templates, export packs, public case-study shape, and productized starter workflows.
 
-## 不可妥协原则
+## Non-Negotiable Rules
 
-1. **镜子不是复读机** —— 提取模式与价值观，不模仿说话。
-2. **每条洞察必须附证据** —— verbatim > artifact > impression，附置信度。无证据不写进自画像。
-3. **矛盾不强行统一** —— 人本来就是矛盾的。记录下来，标"待验证"，等数据够了再说。
-4. **蒸馏器允许被推翻** —— 用户说"我不是这样"，立即修正，写入 Correction 层。
-5. **本地处理，不上云** —— 用户数据全部本地。
-6. **长期主义** —— 月/年是尺度。不为了显得有用而硬出洞察。
-7. **碎片是用户的** —— 引用克制，转述脱敏。
+1. Evidence first: every important insight needs `verbatim`, `artifact`, or clearly marked `impression`.
+2. Verify sender before any claim about who said or did something.
+3. Do not turn a temporary state into a permanent identity claim.
+4. Keep contradictions visible in `conflicts.md`; do not flatten them into neat prose.
+5. If the user says "I am not like this", write a Correction and update the portrait.
+6. Prefer the user's own language over external labels.
+7. Keep raw data local by default; never commit private records or real chat exports.
+8. Sensitive theme 16 is opt-in. If the user hesitates, skip it without pressure.
+9. Public outputs must be redacted and should avoid raw private quotes.
+10. Local Voice Ingestion does not bundle or hardcode a speech model; the user provides one at runtime.
 
-## 架构
+## Choose the Right Mode
 
-```
-① 数据采集层：聊天记录 + flomo/日记 -> 统一碎片格式
-② 蒸馏框架层：Part A 自我记忆11维度（基础5 + v0.4/v0.5扩展6）+ Part B 人格5层 + 四套机制 + v0.6 动态镜像规则
-③ 输出层：自画像 + conflicts + corrections + changelog + manifest
-```
+Use `references/onboarding-and-data-diagnosis.md` when the user is starting, lacks clean data, or needs a data health report.
 
-### Part A 自我记忆
+| Mode | Use when |
+|---|---|
+| `light_start` | Little/no prepared data; run a cold-start interview and mark insights as pending. |
+| `standard` | One or two usable data sources; produce a focused monthly/quarterly portrait. |
+| `deep` | Years of records; run time-batch + theme-based longitudinal distillation. |
+| `repair_only` | One relationship conflict or communication loop matters most. |
+| `public_share` | The user wants GitHub/social/blog/demo output. |
 
-1. 价值观与情绪
-2. 行为与决策模式
-3. 人际关系
-4. 目标与方向
-5. 个人经历
-6. 饮食偏好
-7. 生活习惯
-8. 思维方式
-9. 世界观与人生观
-10. 爱好系统
-11. 亲密/性表达（可选敏感维度，必须获得用户明确同意）
+## Standard Workflow
 
-### Part B 人格五层
+1. **Diagnose inputs**: run `scripts/diagnose_distillation_inputs.py <workspace-or-raw-folder>` when files exist.
+2. **Set consent scope**: read `references/privacy-consent-redaction.md`; decide source, time, relationship, theme, and output scope.
+3. **Prepare data**: put records under `distillation/raw/`; use Local Voice Ingestion for audio if needed; merge with `scripts/merge_messages.py`.
+4. **Review existing memory**: read `conflicts.md`, `corrections.md`, `manifest.json`, and prior self portraits.
+5. **First pass by time**: use `scripts/filter_by_time.py`; write a batch report from `references/batch-report-template.md`.
+6. **Second pass by theme**: use `scripts/filter_by_theme.py`; write theme reports from `references/theme-report-template.md`.
+7. **Apply dynamic rules**: read `references/dynamic-mirror-rules.md`; include state/trait, context weight, three-part confidence, fact/interpretation/name, falsifiability, counter-evidence, and user language.
+8. **Merge portrait**: use `references/self-portrait-template.md`; update conflicts, corrections, changelog, manifest, and archive.
+9. **Quality check**: run `scripts/quality_check_distillation.py --input <artifact>`.
+10. **User review**: run `scripts/make_review_queue.py --input <artifact>` and ask the user to confirm, reject, rename, or add counter-evidence.
+11. **Translate to action**: when useful, read `references/action-translation.md` and produce a 7-day experiment, script, decision lens, or environment adjustment.
+12. **Export or publish**: for public/shareable outputs, run `scripts/redact_public_artifact.py`; read `references/community-template-kit.md` and use templates in `assets/templates/`.
 
-- Layer 1 硬规则：不可违背的底线、稳定行为规则、雷区
-- Layer 2 身份：用户是谁、当前阶段、核心自我认同
-- Layer 3 说话风格：句式、语气词、不同关系中的表达差异
-- Layer 4 情感模式：触发器、调节方式、压力/亲密中的变化
-- Layer 5 人际行为：关系中的行动方式、冲突处理、照顾/依赖模式
+## Longitudinal Themes
 
-## 四套机制
+1. Values and emotions
+2. Behavior and decision patterns
+3. Partner / close relationship
+4. Family relationship
+5. Friend relationship
+6. Goals and direction
+7. Personal history timeline
+8. Speaking style evolution
+9. Conflict handling evolution
+10. Consumption values
+11. Food preferences
+12. Lifestyle habits
+13. Thinking style
+14. Worldview and lifeview
+15. Hobbies and interest system
+16. Intimacy / sexuality expression, optional and consent-gated
 
-### 1. 证据分级
+## Reference Routing
 
-每条洞察必须标注证据等级和置信度。细则见 `references/evidence-grading.md`。
+- Starting or diagnosing data: `references/onboarding-and-data-diagnosis.md`
+- Consent, privacy, redaction, deletion: `references/privacy-consent-redaction.md`
+- Evidence and confidence: `references/evidence-grading.md`
+- Conflict tracking: `references/conflict-tracker.md`
+- User corrections: `references/correction-rules.md`
+- Sender verification: `references/sender-verification.md`
+- Keyword search limits: `references/keyword-usage.md`
+- Special periods: `references/special-period.md`
+- Dynamic mirror rules: `references/dynamic-mirror-rules.md`
+- Structured insight fields: `references/insight-schema-v0.9.json`
+- Action translation: `references/action-translation.md`
+- Relationship maps and repair: `references/relationship-pack.md`
+- Community templates and exports: `references/community-template-kit.md`
+- Full/batch/theme templates: `references/self-portrait-template.md`, `references/batch-report-template.md`, `references/theme-report-template.md`
 
-```
-verbatim   -> 原文直引，必须标 sender=已验证
-artifact   -> 统计数据/消息密度/时间分布/文件痕迹
-impression -> 蒸馏器推断，最低级，必须配原文或 artifact
-置信度     -> 高 / 中 / 低
-```
+## Script Routing
 
-### 2. CONFLICT 追踪
+- Initialize workspace: `scripts/init_distillation.py <workspace>`
+- Diagnose inputs: `scripts/diagnose_distillation_inputs.py <workspace-or-raw-folder>`
+- Transcribe local audio: `scripts/batch_transcribe_local_voice.py --input raw/audio --output raw/voice-transcripts --model <local-asr-model-or-path>`
+- Merge text and voice transcripts: `scripts/merge_messages.py`
+- Generate stats: `scripts/stats_overview.py`
+- Filter by time/theme: `scripts/filter_by_time.py`, `scripts/filter_by_theme.py`
+- Verify sender: `scripts/verify_sender.py`
+- Quality check: `scripts/quality_check_distillation.py`
+- Build user review queue: `scripts/make_review_queue.py`
+- Redact public artifacts: `scripts/redact_public_artifact.py`
 
-不同来源、不同时间、不同情境说法不一致时，不强行统一，写入 `conflicts.md`。每次蒸馏开始前先拉出当前 CONFLICT 状态。细则见 `references/conflict-tracker.md`。
+## Output Discipline
 
-### 3. Correction 层
+- Use UTF-8.
+- Do not hardcode real names, relationship names, chat names, or local paths in reusable templates.
+- Quote sparingly. Prefer redacted paraphrase when direct quotes are not necessary.
+- Keep `fact`, `interpretation`, and `temporary_name` separate.
+- For public examples, use synthetic or redacted material only.
+- End important reports with review questions and next actions.
 
-用户指出"我不是这样"时立即修正。不要删除原洞察，保留迭代痕迹，写入 `corrections.md`。细则见 `references/correction-rules.md`。
-
-### 4. 增量 merge + 版本管理
-
-月度 merge 不覆盖旧结论。新增标 `[新增 YYYY-MM]`，修订标 `[修订 YYYY-MM]`，旧版本归档到 `archive/`，`manifest.json` 记录版本元数据。细则见 `references/merge-guide.md`。
-
-### 5. 动态镜像规则
-
-重要洞察必须区分稳定特质、阶段状态、特殊时期反应、关系触发模式或待验证模式；把置信度拆成 evidence / interpretation / stability；分离事实/解释/命名；优先使用用户语言；并维护反证索引。细则见 `references/dynamic-mirror-rules.md`。
-
-v0.6 还提供机器可读 schema 和自动质检脚本：
-
-```bash
-python scripts/quality_check_distillation.py --input self-portrait-YYYY-MM.md --output quality-report.md
-```
-
-## 关键防翻车规则
-
-1. 凡涉及"谁说了什么""谁做了什么"的判断，必须回原始数据验证 sender。先读 `references/sender-verification.md`，并用 `scripts/verify_sender.py` 辅助。
-2. 关键词统计只用于发现值得读的对话段，不用于定性关系、情绪、依恋类型。见 `references/keyword-usage.md`。
-3. 每个时间段/主题开头强制标注特殊时期。凡涉及"下降/减少/边缘化"判断，先排除考试周、假期、生病期、重大事件期。见 `references/special-period.md`。
-4. 优先采信用户自我报告；量化数据只做描述，不做定性终审。
-5. 如涉及第 16 主题（亲密/性表达），先确认用户明确同意；不同意或犹豫时直接跳过，不追问、不推断。
-6. 不把一次性状态写成永久人格；需要判断稳定性、情境权重、反证索引或可推翻条件时，先读 `references/dynamic-mirror-rules.md`。
-
-## 标准流程
-
-### 初始化
-
-运行：
-
-```bash
-python scripts/init_distillation.py <workspace>
-```
-
-创建：
-
-```
-distillation/
-├── raw/
-├── v2/
-├── archive/
-├── self-portrait-YYYY-MM.md
-├── conflicts.md
-├── corrections.md
-├── changelog.md
-└── manifest.json
-```
-
-### 月度蒸馏
-
-1. **数据准备**：收集聊天记录/flomo/日记到 `distillation/raw/`。需要合并文本和语音转录时运行 `scripts/merge_messages.py`，需要概览时运行 `scripts/stats_overview.py`。
-2. **CONFLICT 回看**：读取 `conflicts.md`，列出本次要重点验证的矛盾。
-3. **第一轮：按时间段蒸馏**：按季度、人生阶段或用户指定范围切分数据，用 `scripts/filter_by_time.py` 筛选，读原文并产出批次报告。模板见 `references/batch-report-template.md`。
-4. **第二轮：按主题纵向蒸馏**：最多 16 个主题逐一跨全时段分析，可按用户目标裁剪；第 16 主题为可选敏感主题，必须获得明确同意后才启用。用 `scripts/filter_by_theme.py` 筛选，读原文、验证 sender、纵向识别模式。模板见 `references/theme-report-template.md`。
-5. **用户复核**：每个主题完成后必须等用户复核。错误立即 Correction，补充立即追加，可关闭的 CONFLICT 标记关闭。
-6. **合并自画像**：以已完成的纵向主题为骨架，把批次时间线深度、verbatim 证据、阶段演变细节编织进去。不简化、不删减。模板见 `references/self-portrait-template.md`。
-7. **更新元数据**：更新 `conflicts.md`、`corrections.md`、`changelog.md`、`manifest.json`，旧版本归档。
-
-## 最多 16 个纵向主题
-
-1. 价值观与情绪
-2. 行为与决策模式
-3. 与伴侣关系
-4. 与家人关系
-5. 与朋友关系
-6. 目标与方向
-7. 个人经历时间线
-8. 说话风格演变
-9. 冲突处理进化
-10. 消费观演变
-11. 饮食偏好
-12. 生活习惯
-13. 思维方式
-14. 世界观与人生观
-15. 爱好系统
-16. 亲密/性表达（可选敏感主题，必须获得用户明确同意；可跳过）
-
-每个主题流程：
-
-```
-Step 1: 用关键词+时间范围筛选相关消息
-Step 2: 读取筛选消息原文和上下文，验证 sender
-Step 3: 按时间纵向排列，识别模式/变化/矛盾
-Step 4: 提取洞察，每条附证据等级、sender验证、置信度
-Step 5: 标注特殊时期影响
-Step 6: 与上一版本和第一轮批次洞察对比
-Step 7: 等用户复核
-```
-
-## Reference 路由
-
-- 需要完整框架说明：读 `references/framework-v2.md`
-- 写洞察证据和置信度：读 `references/evidence-grading.md`
-- 处理矛盾：读 `references/conflict-tracker.md`
-- 处理用户纠正：读 `references/correction-rules.md`
-- 使用 verbatim 或判断谁做了什么：读 `references/sender-verification.md`
-- 使用关键词筛选：读 `references/keyword-usage.md`
-- 分析特殊时期：读 `references/special-period.md`
-- 判断状态/特质、情境权重、三段置信度、事实/解释/命名、反证索引、用户语言优先、可推翻条件：读 `references/dynamic-mirror-rules.md`
-- 需要结构化字段约束：读 `references/insight-schema-v0.6.json`
-- 需要自动检查自画像或主题报告：运行 `scripts/quality_check_distillation.py`
-- 写自画像/批次/主题报告：读对应 template
-- 合并两轮蒸馏结果或做版本管理：读 `references/merge-guide.md`
-
-## 输出纪律
-
-- 所有文件使用 UTF-8。
-- 不硬编码任何用户姓名、关系名、会话名或本地路径。
-- 只在用户允许的数据范围内处理，默认本地完成。
-- 模板可以复制，但内容必须基于用户自己的证据重写。
-- 每条原文引用都要克制；能转述脱敏就不要大段引用。
-
-
-
-## Local Voice Ingestion / 本地语音入口
-
-Use this path when source material includes local audio, voice notes, meeting recordings, listening-practice audio, or exported WeChat voice messages. Call it "Local Voice Ingestion" / "本地语音入口"; do not describe it as a bundled model. The user must provide a local ASR model with `--model` or `LIVING_MIRROR_ASR_MODEL`.
-
-```bash
-python scripts/probe_local_voice_env.py
-python scripts/batch_transcribe_local_voice.py --input raw/audio --output raw/voice-transcripts --recursive --resume --model <local-asr-model-or-path>
-```
-
-Then merge `raw/voice-transcripts/transcripts.jsonl` with `scripts/merge_messages.py`.
