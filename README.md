@@ -2,7 +2,7 @@
 
 > Living Mirror v0.9 is a unified self-distillation core framework. Start with messy records or no records, turn them into a correctable self portrait, then translate insights into review questions, actions, relationship maps, and public-safe templates.
 
-Language: English | [????](README.zh-CN.md)
+Language: English | [Simplified Chinese](README.zh-CN.md)
 
 **Living Mirror** is a reusable self-distillation skill pack for Codex, Claude Code, and WorkBuddy. It helps an AI agent read local fragments such as chat logs, flomo notes, journals, and voice transcripts, then produce a self portrait that is evidence-backed, confidence-scored, contradiction-aware, correctable, versioned, and privacy-conscious.
 
@@ -140,12 +140,6 @@ Diagnose local inputs:
 python scripts/diagnose_distillation_inputs.py <workspace-or-raw-folder> --output data-diagnosis.md
 ```
 
-Merge text messages and voice transcripts:
-
-```bash
-python scripts/merge_messages.py --messages raw/messages.jsonl --voice raw/voice-transcripts/transcripts.jsonl --output raw/merged.jsonl --sort
-```
-
 Quality-check a portrait:
 
 ```bash
@@ -168,19 +162,19 @@ python scripts/redact_public_artifact.py --input self-portrait-YYYY-MM.md --outp
 
 ```text
 .
-??? packages/
-?   ??? workbuddy/
-?   ??? codex/
-?   ??? claude-code/
-??? docs/
-?   ??? design-lineage.md
-?   ??? privacy-and-safety.md
-?   ??? local-voice-ingestion.md
-?   ??? productization-and-community.md
-?   ??? visual-templates.md
-??? CHANGELOG.md
-??? README.md
-??? README.zh-CN.md
+|-- packages/
+|   |-- workbuddy/
+|   |-- codex/
+|   `-- claude-code/
+|-- docs/
+|   |-- design-lineage.md
+|   |-- privacy-and-safety.md
+|   |-- local-voice-ingestion.md
+|   |-- productization-and-community.md
+|   `-- visual-templates.md
+|-- CHANGELOG.md
+|-- README.md
+`-- README.zh-CN.md
 ```
 
 Each package contains:
