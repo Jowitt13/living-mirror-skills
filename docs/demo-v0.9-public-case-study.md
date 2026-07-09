@@ -1,65 +1,50 @@
-# Demo Skill Pack v0.9 Public Case Study
+# Demo Living Mirror v0.9 Public Case Study
 
-> Synthetic example. No real private records are included.
-> Core self-distillation framework: v0.6. Skill Pack/product layer: v0.9.
+> Core self-distillation framework: v0.9. This is synthetic demo material. Do not use real private records in public case studies.
 
-## Pain Point
+## Public Context
 
-The user wants to understand why they disappear during tense conversations, but they do not want to expose raw chat logs publicly.
+- Data type: redacted chat excerpts, notes, and voice transcript summaries.
+- Time span: 12 months.
+- Consent scope: public-safe summary only; no raw private quotes; no identifiable third parties.
+- Mode: `public_share` after private review.
 
-## Input Mode
+## Before
 
-- Mode: `standard`
-- Sources: synthetic chat fragments + synthetic notes
-- Privacy level: `public`
-- Sensitive theme 16: skipped
+The user had many scattered records and could not tell which patterns were stable, which were temporary, and which were relationship-triggered.
 
-## Data Diagnosis
+## v0.9 Process
 
-- Usable text records: 1,240
-- Sender coverage: 98%
-- Conversation coverage: 90%
-- Main risk: tense periods are clustered around deadlines, so stability confidence should stay low until more contexts are checked.
+1. Data diagnosis checked source coverage, sender quality, duplicates, and privacy risks.
+2. Consent scope limited the output to public-safe patterns.
+3. Theme distillation produced evidence-backed insights.
+4. Dynamic mirror rules split facts, interpretations, and temporary names.
+5. Review queue asked the user to confirm, reject, rename, or add counter-evidence.
+6. Redaction removed private quotes and third-party identifiers.
+7. Action translation turned confirmed insights into small experiments.
 
-## Insight Card
+## Public Output Shape
 
-### INSIGHT-003: "I need a little time"
+### Three Things the Mirror Found
 
-- Fact: In several tense threads, the user paused before returning with a more careful reply.
-- Interpretation: This may be a regulation step before repair, not simple avoidance.
-- Pattern type: relationship_triggered / pending_pattern
-- Context weight: time=deadline-heavy months; relationship=close relationships; body=unknown; event=conflict; medium=text
-- Evidence: [artifact] reply timing changed in marked conflict threads; [impression] supported by synthetic notes
-- Confidence: evidence=medium; interpretation=medium; stability=low
-- Falsifiability: If the same pattern appears outside conflict, or the user says the pauses were logistical, revise.
-- Counter-evidence index: CE-001
-- User language: "I need a little time"
-- Review state: needs_more_evidence
-- Privacy level: public
+1. **Pattern A**: The user makes better decisions when they can compare options visually.
+   - Evidence level: artifact + impression.
+   - Confidence: evidence high / interpretation medium / stability medium.
+   - Counter-evidence: CE-001, works less well under time pressure.
 
-## Counter-Evidence
+2. **Pattern B**: The user tends to delay hard conversations until they can write first.
+   - Evidence level: redacted paraphrase.
+   - Confidence: evidence medium / interpretation medium / stability low-medium.
+   - Review question: "Is writing first a need, a habit, or only true in this relationship?"
 
-| ID | Challenges | Counter-evidence | Strength | Status | Effect |
-|---|---|---|---|---|---|
-| CE-001 | INSIGHT-003 | In one synthetic family thread, the user repaired immediately without pausing. | medium | open | narrows |
+3. **Pattern C**: The user uses humor as a repair attempt, but it can hide direct requests.
+   - Evidence level: impression.
+   - Confidence: evidence low / interpretation medium / stability low.
+   - Action: try one direct ask before using humor in the next difficult conversation.
 
-## Review Queue
+## Public Safety Notes
 
-1. Does "I need a little time" sound like the user's own language?
-2. Is this pattern specific to close relationships?
-3. Was the deadline period amplifying the pause?
-4. Should this be an action experiment or stay as observation?
-
-## 7-Day Experiment
-
-- Tiny action: In one low-stakes tense moment, say "I want to answer this well. I need an hour."
-- What to observe: relief, anxiety, repair quality, whether the pause becomes avoidance.
-- Stop condition: stop if it increases pressure, fear, or conflict.
-
-## Public-Safe Notes
-
-- No raw chat quotes.
-- No real names.
-- No local paths.
-- No identifiable third-party material.
-- Pattern is presented as pending, not as a fixed personality label.
+- No raw chat logs are included.
+- Relationship identities are removed.
+- Low-confidence insights are marked as review questions.
+- The user keeps the right to correct or delete any claim.

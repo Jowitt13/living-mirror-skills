@@ -1,6 +1,6 @@
 # living-mirror for Claude Code
 
-This package is the Claude Code version of Living Mirror Skill Pack v0.9 for the v0.6 core self-distillation framework.
+This package is the Claude Code version of Living Mirror v0.9, the unified core self-distillation framework.
 
 ## Recommended location
 

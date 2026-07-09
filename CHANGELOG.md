@@ -1,23 +1,26 @@
 # Changelog
 
-## Skill Pack v0.9 - 2026-07-09
+## v0.9 - 2026-07-10
 
-Living Mirror Skill Pack v0.9 productizes the v0.6 core framework for reuse, sharing, and community templates. The self-distillation framework version remains **v0.6**.
+Living Mirror v0.9 upgrades the self-distillation core framework itself to **v0.9**. The earlier product-layer additions are now part of the unified framework, and new manifests, templates, self portraits, and framework documents should use `framework_version: "v0.9"`.
 
-Added:
+### Added
 
-- Community template kit: `references/community-template-kit.md`.
-- Reusable export templates under `assets/templates/`.
-- Public case-study shape for GitHub, blogs, slides, and social posts.
-- Obsidian-style vault index template.
-- v0.9 product extension schema with optional `review_state`, `privacy_level`, `consent_scope`, and `action_translation` fields, layered on top of v0.6 insights.
-- Productization documentation: `docs/productization-and-community.md`.
+- v0.9 as the unified core framework version across README, package skills, references, templates, and scripts.
+- v0.9 insight schema as the primary structured insight schema.
+- Public case-study, export, and community template guidance as core framework outputs.
 
-Changed:
+### Promoted into Core
 
-- README and README.zh-CN now distinguish core framework v0.6 from Skill Pack v0.9.
-- All three platform packages now route agents through onboarding, privacy, action, relationship, and community-template references.
-- Quality checker now reports the v0.6 core check and supports optional Skill Pack v0.9 `--product` checks.
+- v0.7 onboarding, data diagnosis, consent scope, privacy levels, redaction, and forgetting/deletion rules.
+- v0.8 action translation, relationship maps, repair/boundary scripts, and review queues.
+- v0.9 community templates, export packs, public case-study shape, and contribution checklist.
+
+### Changed
+
+- Initialization now creates `framework_version: "v0.9"` and default portrait version `v0.9.0`.
+- Quality checker now reports Living Mirror v0.9 checks and treats product/community fields as v0.9 framework fields.
+- Documentation now treats v0.9 as the unified core framework rather than an external add-on.
 
 ## Skill Pack v0.8 - 2026-07-09
 

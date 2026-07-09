@@ -1,22 +1,24 @@
 # Living Mirror Skills v0.9
 
-> Skill Pack v0.9 for the Living Mirror core self-distillation framework v0.6. Start with messy records or no records, turn them into a correctable self portrait, then translate insights into review questions, actions, relationship maps, and public-safe templates.
+> Living Mirror v0.9 is a unified self-distillation core framework. Start with messy records or no records, turn them into a correctable self portrait, then translate insights into review questions, actions, relationship maps, and public-safe templates.
 
-Language: English | [简体中文](README.zh-CN.md)
+Language: English | [????](README.zh-CN.md)
 
-**Living Mirror** is a reusable skill pack for Codex, Claude Code, and WorkBuddy. It helps an AI agent read local fragments such as chat logs, flomo notes, journals, and voice transcripts, then produce a self portrait that is evidence-backed, confidence-scored, contradiction-aware, correctable, versioned, and privacy-conscious.
+**Living Mirror** is a reusable self-distillation skill pack for Codex, Claude Code, and WorkBuddy. It helps an AI agent read local fragments such as chat logs, flomo notes, journals, and voice transcripts, then produce a self portrait that is evidence-backed, confidence-scored, contradiction-aware, correctable, versioned, and privacy-conscious.
 
 It is not a personality clone. It does not try to make an assistant "be you." It builds a mirror that can revise itself, keep counter-evidence, ask for review, and turn insight into small next actions.
 
-Current **core distillation framework**: **v0.6**.  
-Current **skill pack / product layer**: **v0.9**.
+Current **self-distillation core framework**: **v0.9**.
 
-## What Skill Pack v0.9 Adds
+## What v0.9 Adds
 
-Living Mirror's core framework remains v0.6. Skill Pack v0.9 adds onboarding, privacy, review, action, relationship, and community-template layers around that core. It does not rename or replace the self-distillation framework version.
+Living Mirror v0.9 promotes the earlier onboarding, privacy, review, action, relationship, export, and community-template layers into the unified core framework. From v0.9 onward, new manifests, templates, self portraits, and framework documents should use `framework_version: "v0.9"`.
 
 | Version | Focus | What it solves |
 |---|---|---|
+| v0.4 | Longitudinal expansion | Extends theme distillation from 10 to 15 themes. |
+| v0.5 | Sensitive opt-in theme | Adds consent-gated theme 16 for intimacy/sexuality expression. |
+| v0.6 | Dynamic mirror rules | Adds context weight, three-part confidence, fact/interpretation/name separation, user-language priority, and counter-evidence. |
 | v0.7 | Onboarding and trust | Cold-start interview, data diagnosis, consent scope, privacy levels, redaction, forgetting/deletion rules. |
 | v0.8 | Action and relationships | 7-day experiments, conversation/boundary/repair scripts, relationship maps, review queue. |
 | v0.9 | Productization and community | Reusable templates, Obsidian/Notion/PDF/social export shapes, public case-study format, contribution checklist. |
@@ -55,7 +57,7 @@ Living Mirror is not therapy, medical advice, legal advice, or crisis support. I
    Chat logs + notes + journals + local voice transcripts -> unified fragments
 
 3. Distillation layer
-   Core framework v0.6: 16-theme longitudinal distillation
+   Core framework v0.9: 16-theme longitudinal distillation
    Evidence grading + sender verification + CONFLICT + Correction
    Dynamic mirror rules: context, state/trait, three-part confidence, counter-evidence
 
@@ -116,7 +118,7 @@ python scripts/batch_transcribe_local_voice.py --input raw/audio --output raw/vo
 | Codex | `packages/codex/` | Codex skill installation with minimal frontmatter. |
 | Claude Code | `packages/claude-code/` | Claude Code users who want the same framework and scripts. |
 
-All three packages share the same method, references, scripts, and templates.
+All three packages share the same v0.9 framework, references, scripts, and templates.
 
 ## Quick Start
 
@@ -166,19 +168,19 @@ python scripts/redact_public_artifact.py --input self-portrait-YYYY-MM.md --outp
 
 ```text
 .
-├── packages/
-│   ├── workbuddy/
-│   ├── codex/
-│   └── claude-code/
-├── docs/
-│   ├── design-lineage.md
-│   ├── privacy-and-safety.md
-│   ├── local-voice-ingestion.md
-│   ├── productization-and-community.md
-│   └── visual-templates.md
-├── CHANGELOG.md
-├── README.md
-└── README.zh-CN.md
+??? packages/
+?   ??? workbuddy/
+?   ??? codex/
+?   ??? claude-code/
+??? docs/
+?   ??? design-lineage.md
+?   ??? privacy-and-safety.md
+?   ??? local-voice-ingestion.md
+?   ??? productization-and-community.md
+?   ??? visual-templates.md
+??? CHANGELOG.md
+??? README.md
+??? README.zh-CN.md
 ```
 
 Each package contains:

@@ -1,6 +1,6 @@
 ---
 name: living-mirror
-description: 见己镜 Living Mirror Skill Pack v0.9：围绕自我蒸馏核心框架 v0.6 的本地优先操作层，提供数据体检、隐私脱敏、行动转译、关系场景和社区模板。从聊天记录、flomo、日记、语音转录等碎片数据中，按 v0.6 框架生成带证据、三段置信度、情境权重、反证索引、用户语言优先、允许矛盾、可被推翻、可回滚的自画像。当用户说"蒸馏自己""自画像""理解自己""自我认知""分析我的聊天记录""帮我把洞察变成行动""关系地图""公开版本脱敏"时触发。
+description: 见己镜 Living Mirror v0.9：统一版自我蒸馏核心框架，提供数据体检、隐私脱敏、行动转译、关系场景和社区模板。从聊天记录、flomo、日记、语音转录等碎片数据中，按 v0.9 框架生成带证据、三段置信度、情境权重、反证索引、用户语言优先、允许矛盾、可被推翻、可回滚的自画像。当用户说"蒸馏自己""自画像""理解自己""自我认知""分析我的聊天记录""帮我把洞察变成行动""关系地图""公开版本脱敏"时触发。
 version: "0.9"
 updated: "2026-07-09"
 platforms: [claude-code]
@@ -19,16 +19,18 @@ triggers:
   - "distillation"
 ---
 
-# 见己镜 Living Mirror Skill Pack v0.9
+# 见己镜 Living Mirror v0.9
 
-Living Mirror Skill Pack v0.9 is an operation/product layer around the **v0.6 core self-distillation framework**. It turns local fragments into a verifiable, correctable, living self portrait without changing the framework version used by manifests, self portraits, or authoritative framework files.
+Living Mirror v0.9 is the unified core self-distillation framework. It turns local fragments into a verifiable, correctable, living self portrait, and it treats onboarding, privacy, review, action, relationship, export, and community templates as part of the framework itself.
 
-## Version Boundary
+## Version Stack
 
-- **Core framework v0.6**: the single self-distillation framework version. Manifests, self portraits, and authoritative framework documents should keep `framework_version: "v0.6"`.
-- **Skill Pack v0.7**: onboarding, cold-start interview, data diagnosis, consent scope, privacy levels, redaction, and forgetting/deletion rules.
-- **Skill Pack v0.8**: action translation, relationship maps, repair/boundary scripts, and review queues.
-- **Skill Pack v0.9**: community templates, export packs, public case-study shape, and productized starter workflows.
+- **v0.4**: expanded longitudinal distillation from 10 to 15 themes.
+- **v0.5**: added optional, consent-gated sensitive theme 16.
+- **v0.6**: added dynamic mirror rules: context weight, three-part confidence, fact/interpretation/name separation, counter-evidence, and user-language priority.
+- **v0.7**: added onboarding, cold-start interview, data diagnosis, consent scope, privacy levels, redaction, and forgetting/deletion rules.
+- **v0.8**: added action translation, relationship maps, repair/boundary scripts, and review queues.
+- **v0.9**: unified all of the above as the current core framework; new manifests and self portraits should use `framework_version: "v0.9"`.
 
 ## Non-Negotiable Rules
 
@@ -100,7 +102,7 @@ Use `references/onboarding-and-data-diagnosis.md` when the user is starting, lac
 - Keyword search limits: `references/keyword-usage.md`
 - Special periods: `references/special-period.md`
 - Dynamic mirror rules: `references/dynamic-mirror-rules.md`
-- Core insight fields: `references/insight-schema-v0.6.json`; optional product-layer fields: `references/insight-schema-v0.9.json`
+- Core insight fields: `references/insight-schema-v0.9.json`; legacy v0.6 schema remains available for old portraits
 - Action translation: `references/action-translation.md`
 - Relationship maps and repair: `references/relationship-pack.md`
 - Community templates and exports: `references/community-template-kit.md`

@@ -1,55 +1,38 @@
-# Productization and Community Templates v0.9
+# Productization and Community Layer
 
-Skill Pack v0.9 turns Living Mirror into a more complete public skill pack while keeping the self-distillation core framework at v0.6. The goal is not to add more personality labels or rename the core framework. The goal is to solve the parts that stop real people from using reflective AI safely:
+Living Mirror v0.9 promotes the productization and community layer into the unified self-distillation core framework. The goal is not to add more personality labels. The goal is to solve the parts that stop real people from using reflective AI safely:
 
-- "I do not know how to start."
-- "My data is messy."
-- "I am afraid of exposing private records."
-- "The analysis is accurate, but I do not know what to do next."
-- "The AI might be wrong."
-- "I want to share the method without sharing my life."
+1. They do not know whether their data is ready.
+2. They are afraid of exposing private records.
+3. They receive an accurate portrait but do not know what to do next.
+4. They need a lightweight review loop, not a final verdict.
+5. They want to share the method publicly without leaking private material.
 
-## Product Layers
+## v0.9 Core Additions
 
-| Layer | Files |
-|---|---|
-| Start | `references/onboarding-and-data-diagnosis.md`, `scripts/diagnose_distillation_inputs.py`, `assets/templates/starter-interview.md` |
-| Trust | `references/privacy-consent-redaction.md`, `scripts/redact_public_artifact.py` |
-| Review | `scripts/make_review_queue.py`, self-portrait and theme templates |
-| Action | `references/action-translation.md`, `assets/templates/weekly-experiment-card.md` |
-| Relationship | `references/relationship-pack.md`, `assets/templates/relationship-map.md` |
-| Community | `references/community-template-kit.md`, `assets/templates/community-use-case.md`, `assets/templates/public-case-study.md` |
+- **Start modes**: `light_start`, `standard`, `deep`, `repair_only`, and `public_share`.
+- **Data diagnosis**: a preflight report for source coverage, time span, sender quality, duplicates, and risk flags.
+- **Consent scope**: source, time, relationship, theme, output, and retention boundaries.
+- **Privacy levels**: private, shareable, and public.
+- **Review queue**: every important claim can become a user-facing confirmation, rejection, rename, or counter-evidence question.
+- **Action translation**: confirmed insights can become 7-day experiments, scripts, decision lenses, and environment adjustments.
+- **Relationship pack**: relationship maps, conflict loops, repair maps, and boundary scripts.
+- **Community template kit**: reusable public examples, contribution checklist, and export shapes.
 
-## Recommended User Journey
+## What v0.9 Does Not Do
 
-1. Diagnose data or run a cold-start interview.
-2. Confirm consent scope and privacy level.
-3. Create a focused first portrait instead of trying to analyze everything.
+- It does not publish raw user data.
+- It does not diagnose mental health, give legal advice, or replace crisis support.
+- It does not make claims about third parties without sender/source verification.
+- It does not force sensitive theme 16; that theme remains opt-in and consent-gated.
+- It does not treat a temporary state as a permanent identity.
+
+## Recommended Public Artifact Flow
+
+1. Run data diagnosis.
+2. Set consent scope.
+3. Produce a private portrait.
 4. Generate a review queue.
-5. Apply user corrections and counter-evidence.
-6. Translate one insight into a 7-day experiment or relationship script.
-7. Redact and export only if the user wants a public artifact.
-
-## Template Ideas for Contributors
-
-- Monthly self-review.
-- Relationship repair map.
-- Creator energy and attention rhythm.
-- Career decision lens.
-- Food/lifestyle pattern review.
-- Grief or life-transition portrait.
-- Public-safe "how I used Living Mirror" case study.
-- Obsidian vault export.
-- Xiaohongshu card set.
-
-## Contribution Bar
-
-A template is worth adding when it:
-
-- Solves a real pain point.
-- Can start with light data.
-- Includes privacy and consent guidance.
-- Preserves evidence and counter-evidence.
-- Includes review or Correction.
-- Avoids diagnosis, moralizing, and manipulation.
-- Works in at least one of Codex, Claude Code, or WorkBuddy.
+5. Apply user corrections.
+6. Redact to public level.
+7. Export as a public case study, short social post, slide outline, or Obsidian/Notion index.

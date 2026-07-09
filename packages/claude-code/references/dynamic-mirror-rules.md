@@ -1,4 +1,4 @@
-# Dynamic Mirror Rules v0.6
+# Dynamic Mirror Rules v0.9
 
 Use these rules when writing a self portrait, merging theme reports, deciding whether an observation is stable, or turning repeated evidence into a user-facing insight.
 
