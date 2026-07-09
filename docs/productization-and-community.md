@@ -1,6 +1,6 @@
 # Productization and Community Templates v0.9
 
-v0.9 turns Living Mirror into a more complete public skill pack. The goal is not to add more personality labels. The goal is to solve the parts that stop real people from using reflective AI safely:
+Skill Pack v0.9 turns Living Mirror into a more complete public skill pack while keeping the self-distillation core framework at v0.6. The goal is not to add more personality labels or rename the core framework. The goal is to solve the parts that stop real people from using reflective AI safely:
 
 - "I do not know how to start."
 - "My data is messy."
@@ -53,4 +53,3 @@ A template is worth adding when it:
 - Includes review or Correction.
 - Avoids diagnosis, moralizing, and manipulation.
 - Works in at least one of Codex, Claude Code, or WorkBuddy.
-

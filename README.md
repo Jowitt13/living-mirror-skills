@@ -1,6 +1,6 @@
 # Living Mirror Skills v0.9
 
-> A local-first, evidence-backed mirror for self-understanding. Start with messy records or no records, turn them into a correctable self portrait, then translate insights into review questions, actions, relationship maps, and public-safe templates.
+> Skill Pack v0.9 for the Living Mirror core self-distillation framework v0.6. Start with messy records or no records, turn them into a correctable self portrait, then translate insights into review questions, actions, relationship maps, and public-safe templates.
 
 Language: English | [简体中文](README.zh-CN.md)
 
@@ -8,11 +8,12 @@ Language: English | [简体中文](README.zh-CN.md)
 
 It is not a personality clone. It does not try to make an assistant "be you." It builds a mirror that can revise itself, keep counter-evidence, ask for review, and turn insight into small next actions.
 
-Current framework version: **v0.9**.
+Current **core distillation framework**: **v0.6**.  
+Current **skill pack / product layer**: **v0.9**.
 
-## What v0.9 Adds
+## What Skill Pack v0.9 Adds
 
-Living Mirror v0.6 already handled evidence, context, contradiction, and correction. v0.9 makes the framework easier for real people to start and safer to share.
+Living Mirror's core framework remains v0.6. Skill Pack v0.9 adds onboarding, privacy, review, action, relationship, and community-template layers around that core. It does not rename or replace the self-distillation framework version.
 
 | Version | Focus | What it solves |
 |---|---|---|
@@ -54,7 +55,7 @@ Living Mirror is not therapy, medical advice, legal advice, or crisis support. I
    Chat logs + notes + journals + local voice transcripts -> unified fragments
 
 3. Distillation layer
-   16-theme longitudinal framework
+   Core framework v0.6: 16-theme longitudinal distillation
    Evidence grading + sender verification + CONFLICT + Correction
    Dynamic mirror rules: context, state/trait, three-part confidence, counter-evidence
 
@@ -197,4 +198,3 @@ Living Mirror's architecture is an original integration with conceptual referenc
 ## License
 
 MIT License. See [LICENSE](LICENSE).
-

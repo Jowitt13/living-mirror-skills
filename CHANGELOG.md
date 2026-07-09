@@ -1,8 +1,8 @@
 # Changelog
 
-## v0.9 - 2026-07-09
+## Skill Pack v0.9 - 2026-07-09
 
-Living Mirror v0.9 productizes the framework for reuse, sharing, and community templates.
+Living Mirror Skill Pack v0.9 productizes the v0.6 core framework for reuse, sharing, and community templates. The self-distillation framework version remains **v0.6**.
 
 Added:
 
@@ -10,18 +10,18 @@ Added:
 - Reusable export templates under `assets/templates/`.
 - Public case-study shape for GitHub, blogs, slides, and social posts.
 - Obsidian-style vault index template.
-- v0.9 insight schema with optional `review_state`, `privacy_level`, `consent_scope`, and `action_translation` fields.
+- v0.9 product extension schema with optional `review_state`, `privacy_level`, `consent_scope`, and `action_translation` fields, layered on top of v0.6 insights.
 - Productization documentation: `docs/productization-and-community.md`.
 
 Changed:
 
-- README and README.zh-CN now describe v0.9 as the current framework version.
+- README and README.zh-CN now distinguish core framework v0.6 from Skill Pack v0.9.
 - All three platform packages now route agents through onboarding, privacy, action, relationship, and community-template references.
-- Quality checker now reports as v0.9 and supports `--product` checks.
+- Quality checker now reports the v0.6 core check and supports optional Skill Pack v0.9 `--product` checks.
 
-## v0.8 - 2026-07-09
+## Skill Pack v0.8 - 2026-07-09
 
-Living Mirror v0.8 turns self-understanding into reviewable action and relationship workflows.
+Living Mirror Skill Pack v0.8 turns v0.6 self-understanding into reviewable action and relationship workflows.
 
 Added:
 
@@ -30,9 +30,9 @@ Added:
 - Review queue script: `scripts/make_review_queue.py`.
 - Weekly experiment and relationship-map templates.
 
-## v0.7 - 2026-07-09
+## Skill Pack v0.7 - 2026-07-09
 
-Living Mirror v0.7 lowers the barrier to starting and strengthens privacy.
+Living Mirror Skill Pack v0.7 lowers the barrier to starting and strengthens privacy.
 
 Added:
 
@@ -71,4 +71,3 @@ Added optional sensitive theme 16: intimacy / sexuality expression. This theme i
 ## v0.4 - 2026-07-07
 
 Expanded longitudinal distillation from 10 themes to 15 themes by adding food preferences, lifestyle habits, thinking style, worldview/lifeview, and hobbies.
-

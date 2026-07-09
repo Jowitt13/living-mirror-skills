@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://github.com/Jowitt13/living-mirror-skills/insight-schema-v0.9.json",
-  "title": "Living Mirror Insight Schema v0.9",
+  "$id": "https://github.com/Jowitt13/living-mirror-skills/skill-pack-extension-schema-v0.9.json",
+  "title": "Living Mirror Skill Pack v0.9 Extension Schema for v0.6 Insights",
   "type": "object",
   "required": [
     "id",
@@ -149,4 +149,3 @@
   },
   "additionalProperties": true
 }
-

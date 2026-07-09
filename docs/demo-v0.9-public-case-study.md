@@ -1,6 +1,7 @@
-# Demo v0.9 Public Case Study
+# Demo Skill Pack v0.9 Public Case Study
 
 > Synthetic example. No real private records are included.
+> Core self-distillation framework: v0.6. Skill Pack/product layer: v0.9.
 
 ## Pain Point
 
@@ -62,4 +63,3 @@ The user wants to understand why they disappear during tense conversations, but 
 - No local paths.
 - No identifiable third-party material.
 - Pattern is presented as pending, not as a fixed personality label.
-

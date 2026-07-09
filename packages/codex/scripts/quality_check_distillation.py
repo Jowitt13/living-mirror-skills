@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Check Living Mirror v0.9 self-portrait artifacts for required structure."""
+"""Check Living Mirror v0.6 artifacts with optional Skill Pack v0.9 product fields."""
 
 from __future__ import annotations
 
@@ -123,11 +123,11 @@ def validate_product_fields(insight: dict[str, Any], index: int, findings: list[
     label = str(insight.get("id") or f"insight[{index}]")
     for field in PRODUCT_FIELDS:
         if field not in insight:
-            add(findings, "warning", "product_field", f"{label}: v0.9 product field `{field}` is missing")
+            add(findings, "warning", "product_field", f"{label}: Skill Pack v0.9 product field `{field}` is missing")
     if insight.get("privacy_level") not in {None, "private", "shareable", "public"}:
         add(findings, "error", "privacy_level", f"{label}: privacy_level must be private/shareable/public")
     if insight.get("review_state") not in {None, "unreviewed", "confirmed", "corrected", "rejected", "needs_more_evidence"}:
-        add(findings, "error", "review_state", f"{label}: review_state is not v0.9-compatible")
+        add(findings, "error", "review_state", f"{label}: review_state is not Skill Pack v0.9-compatible")
 
 
 def validate_json_artifact(path: Path, product: bool = False) -> list[Finding]:
@@ -189,7 +189,7 @@ def validate_markdown_artifact(path: Path, product: bool = False) -> list[Findin
 def render_markdown(findings: list[Finding]) -> str:
     counts = {level: sum(1 for item in findings if item.level == level) for level in ("error", "warning", "info")}
     lines = [
-        "# Living Mirror v0.9 Quality Check",
+        "# Living Mirror v0.6 Core / Skill Pack v0.9 Quality Check",
         "",
         f"- Errors: {counts['error']}",
         f"- Warnings: {counts['warning']}",
@@ -208,12 +208,12 @@ def render_markdown(findings: list[Finding]) -> str:
 
 def main() -> None:
     configure_stdio()
-    parser = argparse.ArgumentParser(description="Check Living Mirror v0.9 distillation artifacts.")
+    parser = argparse.ArgumentParser(description="Check Living Mirror v0.6 artifacts and optional Skill Pack v0.9 product fields.")
     parser.add_argument("--input", required=True, type=Path, help="Markdown or JSON artifact to check.")
     parser.add_argument("--output", type=Path, help="Optional Markdown report path.")
     parser.add_argument("--json", type=Path, help="Optional JSON findings path.")
     parser.add_argument("--fail-on", choices=["error", "warning", "never"], default="error")
-    parser.add_argument("--product", action="store_true", help="Also check v0.9 productization fields.")
+    parser.add_argument("--product", action="store_true", help="Also check Skill Pack v0.9 productization fields.")
     args = parser.parse_args()
 
     if args.input.suffix.lower() == ".json":

@@ -50,9 +50,10 @@ python scripts/merge_messages.py --messages raw/messages.jsonl --voice raw/voice
 
 ```json
 {
-  "current_version": "v0.9",
+  "current_version": "v0.6.0",
   "current_version_file": "self-portrait-YYYY-MM.md",
-  "framework_version": "Living Mirror v0.9",
+  "framework_version": "v0.6",
+  "skill_pack_version": "v0.9",
   "updated_at": "YYYY-MM-DDTHH:mm:ss",
   "consent_scope": {
     "source_scope": "unset",
@@ -67,7 +68,7 @@ python scripts/merge_messages.py --messages raw/messages.jsonl --voice raw/voice
   },
   "versions": [
     {
-      "version": "v1.0",
+      "version": "v0.6.0",
       "date": "YYYY-MM-DD",
       "file": "self-portrait-YYYY-MM.md",
       "data_window": "YYYY-MM-DD ~ YYYY-MM-DD",

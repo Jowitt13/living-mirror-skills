@@ -1,6 +1,6 @@
 # <用户名或匿名代称> 自画像 · YYYY-MM
 
-> 版本：vX.X | 框架：Living Mirror v0.9 | 生成时间：YYYY-MM-DD | 数据范围：YYYY-MM-DD ~ YYYY-MM-DD
+> 版本：vX.X | 核心框架：v0.6 | Skill Pack：v0.9 | 生成时间：YYYY-MM-DD | 数据范围：YYYY-MM-DD ~ YYYY-MM-DD
 > 数据来源：<聊天记录/flomo/日记/语音转录/其他> | 蒸馏方法：两轮蒸馏（时间段 + 主题纵向）
 > sender 验证：<全部关键 verbatim 已验证 / 部分待验证>
 > 隐私等级：private / shareable / public | 同意范围：source=<...>; time=<...>; relationship=<...>; theme=<...>; output=<...>
@@ -14,7 +14,7 @@
 - 合并原则：以已完成主题为骨架，编织时间线深度和 verbatim 证据。不简化、不删减。
 - 证据纪律：每条洞察附证据等级、sender 验证和置信度。
 - 动态判断：重要洞察需标注人类理解维度、模式类型、情境权重、三段置信度、事实/解释/命名、反证索引和可推翻条件。
-- v0.9 产品化层：先做数据体检和同意范围；完成后生成复核队列；需要时把洞察转成行动实验、关系脚本或可公开的脱敏版本。
+- Skill Pack v0.9 产品化层：先做数据体检和同意范围；完成后生成复核队列；需要时把洞察转成行动实验、关系脚本或可公开的脱敏版本。核心自画像判断仍按 v0.6 框架写入。
 
 ---
 
@@ -199,7 +199,7 @@
 
 ---
 
-## v0.9 行动转译
+## Skill Pack v0.9 行动转译
 
 | Linked insight | Action type | Tiny next step | Review date | Stop condition |
 |---|---|---|---|---|
@@ -207,7 +207,7 @@
 
 ---
 
-## v0.9 公开/分享版本说明
+## Skill Pack v0.9 公开/分享版本说明
 
 - 当前隐私等级：private / shareable / public
 - 是否已运行 `redact_public_artifact.py`：是/否/不适用

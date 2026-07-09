@@ -1,6 +1,6 @@
 # living-mirror for Claude Code
 
-This package is the Claude Code version of Living Mirror v0.9.
+This package is the Claude Code version of Living Mirror Skill Pack v0.9 for the v0.6 core self-distillation framework.
 
 ## Recommended location
 
@@ -32,4 +32,3 @@ C:\Users\<you>\.claude\skills\living-mirror
 4. Keep sensitive theme 16 off unless the user explicitly opts in.
 5. Generate review questions before promoting uncertain insights.
 6. Redact public artifacts before sharing or committing.
-

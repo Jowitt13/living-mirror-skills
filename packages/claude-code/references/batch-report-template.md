@@ -1,6 +1,6 @@
 # <用户名或匿名代称> 自画像 · 批次 N · <阶段名>
 
-> 版本：vX.X-batchN | 框架：Living Mirror v0.9 | 蒸馏时间：YYYY-MM-DD
+> 版本：vX.X-batchN | 核心框架：v0.6 | Skill Pack：v0.9 | 蒸馏时间：YYYY-MM-DD
 > 数据范围：YYYY-MM-DD ~ YYYY-MM-DD | 数据量：<N> 条
 > 数据源：<source summary>
 > 隐私等级：private / shareable / public | 同意范围：source=<...>; time=<...>; relationship=<...>; theme=<...>; output=<...>

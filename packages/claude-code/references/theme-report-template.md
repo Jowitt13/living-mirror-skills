@@ -1,6 +1,6 @@
 # 主题 N：<主题名>（纵向 YYYY-YYYY）
 
-> 蒸馏时间：YYYY-MM-DD | 框架：Living Mirror v0.9 | 方法：直接读取原始数据 + sender 验证
+> 蒸馏时间：YYYY-MM-DD | 核心框架：v0.6 | Skill Pack：v0.9 | 方法：直接读取原始数据 + sender 验证
 > 数据范围：<range> | 候选消息：<N> 条 | 关键 verbatim：<N> 条
 > 隐私等级：private / shareable / public | 同意范围：source=<...>; time=<...>; relationship=<...>; theme=<...>; output=<...>
 

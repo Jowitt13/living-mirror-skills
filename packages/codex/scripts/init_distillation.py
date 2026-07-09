@@ -20,7 +20,7 @@ def main() -> None:
     configure_stdio()
     parser = argparse.ArgumentParser(description="Initialize distillation directory structure.")
     parser.add_argument("workspace", type=Path, help="Workspace path where distillation/ will be created.")
-    parser.add_argument("--version", default="v0.9", help="Initial portrait version.")
+    parser.add_argument("--version", default="v0.6.0", help="Initial portrait version.")
     args = parser.parse_args()
 
     root = args.workspace / "distillation"
@@ -42,7 +42,8 @@ def main() -> None:
                 {
                     "current_version": args.version,
                     "current_version_file": portrait_name,
-                    "framework_version": "Living Mirror v0.9",
+                    "framework_version": "v0.6",
+                    "skill_pack_version": "v0.9",
                     "updated_at": datetime.now().isoformat(timespec="seconds"),
                     "versions": [],
                     "data_sources": {},

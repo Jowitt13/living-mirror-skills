@@ -11,7 +11,8 @@
 
 ## Current Version
 
-- Framework version: v0.9
+- Core framework version: v0.6
+- Skill pack version: v0.9
 - Privacy level:
 - Last review:
 
@@ -23,4 +24,3 @@
 - `actions/`
 - `relationships/`
 - `archive/`
-
